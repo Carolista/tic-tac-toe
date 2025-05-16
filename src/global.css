@@ -50,17 +50,20 @@ h2 {
 
 #grid {
 	flex-direction: column;
+    height: 60vw;
 	margin: 10px auto 0;
+    cursor: pointer;
 }
 
 .row {
 	flex-direction: row;
+    height: 20vw;
+    margin: 2px auto;
 }
 
 #grid,
 .row {
 	width: 60vw;
-	height: 60vw;
 	max-width: 60vw;
 	max-height: 60vw;
 }
@@ -72,9 +75,9 @@ h2 {
 	height: 20vw;
 	max-width: 20vw;
 	max-height: 20vw;
-	margin: 0;
+	margin: 2px;
 	padding: 0;
-	border: 2px white solid;
+	/* border: 2px white solid; */
 }
 
 .x-mark,
@@ -82,7 +85,12 @@ h2 {
 	color: white;
 	font-family: 'Outfit', sans-serif;
 	font-size: 20vw;
+    font-weight: 700;
 	line-height: 0;
+}
+
+.translucent {
+    opacity: 0.5;
 }
 
 .player-box {
