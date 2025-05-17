@@ -1,11 +1,7 @@
 import { useState } from 'react';
-import { palette } from '../shared/colors';
-import { getRandomElement } from '../shared/utils';
 
-const Box = ({ id, player, mark, markCell }) => {
-	let [showTranslucentMark, setShowTranslucentMark] = useState(false);
-
-	let randomColor = getRandomElement(palette);
+const Box = ({ player, box, markCell }) => {
+	const [showTranslucentMark, setShowTranslucentMark] = useState(false);
 
 	const handlePlayerMouseEnter = event => {
 		if (!event.target.innerHTML) setShowTranslucentMark(true);
@@ -17,18 +13,18 @@ const Box = ({ id, player, mark, markCell }) => {
 
 	const handleClick = id => {
 		setShowTranslucentMark(false);
-		markCell(id);
+		markCell(box.id);
 	};
 
 	return (
 		<div
-			id={id}
+			id={box.id}
 			className="box"
-			style={{ backgroundColor: `${randomColor}` }}
-			onClick={() => handleClick(id)}
+			style={{ backgroundColor: `${box.color}` }}
+			onClick={() => handleClick(box.id)}
 			onMouseEnter={handlePlayerMouseEnter}
 			onMouseLeave={handlePlayerMouseLeave}>
-			{mark && <span className={`${mark.toLowerCase()}-mark`}>{mark}</span>}
+			{box.mark && <span className={`${box.mark.toLowerCase()}-mark`}>{box.mark}</span>}
 			{showTranslucentMark && (
 				<span className={`${player.toLowerCase()}-mark translucent`}>
 					{player}

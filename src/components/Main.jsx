@@ -1,65 +1,72 @@
 import { useEffect, useState } from 'react';
 import Grid from './Grid';
-
-const initialMarks = {
-	0: null,
-	1: null,
-	2: null,
-	3: null,
-	4: null,
-	5: null,
-	6: null,
-	7: null,
-	8: null,
-};
+import { getRandomElement } from '../shared/utils';
+import { palette } from '../shared/colors';
 
 const Main = ({ currentPlayer, setCurrentPlayer }) => {
 	const [winner, setWinner] = useState(null);
-	const [playerMarks, setPlayerMarks] = useState(initialMarks);
+	const [boxValues, setBoxValues] = useState(getNewBoxValues());
 
-	const checkForWinner = () => {
-        let haveWinner = false;
-        let winOptions = ["XXX", "OOO"];
-		let p = playerMarks;
-        let winPatterns = [
-            `${p[0]}${p[1]}${p[2]}`,
-            `${p[3]}${p[4]}${p[5]}`,
-            `${p[6]}${p[7]}${p[8]}`,
-            `${p[0]}${p[3]}${p[6]}`,
-            `${p[1]}${p[4]}${p[7]}`,
-            `${p[2]}${p[5]}${p[8]}`,
-            `${p[0]}${p[4]}${p[8]}`,
-            `${p[2]}${p[4]}${p[6]}`
-        ]
-        winPatterns.forEach(pattern => {
-            console.log(pattern);
-            if (winOptions.includes(pattern)) {
-                haveWinner = true;
-                setWinner(currentPlayer);
-            }
-        }); 
-        if (!haveWinner) setCurrentPlayer(currentPlayer === 'X' ? 'O' : 'X');
+	function getNewBoxValues() {
+		let newBoxValues = [];
+		for (let i = 0; i < 9; i++) {
+			newBoxValues[i] = { id: i, mark: null, color: getRandomElement(palette) };
+		}
+		return newBoxValues;
+	}
+
+	const createNewGame = () => {
+		setWinner(null);
+		setBoxValues(getNewBoxValues());
 	};
 
-    useEffect(() => {
-        checkForWinner();
-    }, [playerMarks]);
+	const checkForWinner = () => {
+		let haveWinner = false;
+		let winOptions = ['XXX', 'OOO'];
+		let b = boxValues;
+		let winPatterns = [
+			`${b[0].mark}${b[1].mark}${b[2].mark}`,
+			`${b[3].mark}${b[4].mark}${b[5].mark}`,
+			`${b[6].mark}${b[7].mark}${b[8].mark}`,
+			`${b[0].mark}${b[3].mark}${b[6].mark}`,
+			`${b[1].mark}${b[4].mark}${b[7].mark}`,
+			`${b[2].mark}${b[5].mark}${b[8].mark}`,
+			`${b[0].mark}${b[4].mark}${b[8].mark}`,
+			`${b[2].mark}${b[4].mark}${b[6].mark}`,
+		];
+		for (let pattern of winPatterns) {
+			if (winOptions.includes(pattern)) {
+				haveWinner = true;
+				break;
+			}
+		}
+		if (!haveWinner) {
+			setCurrentPlayer(currentPlayer === 'X' ? 'O' : 'X');
+		} else {
+			setWinner(currentPlayer);
+		}
+	};
 
-    useEffect(() => {
-        setPlayerMarks(initialMarks);
-        if (winner) {
-            console.log(`Player ${winner} is the winner!`);
-            setWinner(null);
-        } 
-    }, [winner]);
+	useEffect(() => {
+		if (!winner) checkForWinner();
+	}, [boxValues]);
+
+	useEffect(() => {
+		if (winner) {
+			// TODO: display modal with winner announcement
+			alert('We have a winner! Congrats, Player ' + winner + '!');
+			if (confirm('\nDo you want to play again?\n')) {
+				createNewGame();
+			}
+		}
+	}, [winner]);
 
 	const handlePlayerMark = id => {
-		let idNum = id[5];
-		if (!playerMarks[idNum]) {
-			setPlayerMarks({
-				...playerMarks,
-				[idNum]: currentPlayer,
+		if (!boxValues[id].mark) {
+			let updatedBoxValues = boxValues.map(box => {
+				return box.id == id ? { ...box, mark: currentPlayer } : { ...box };
 			});
+			setBoxValues(updatedBoxValues);
 		}
 	};
 
@@ -67,7 +74,7 @@ const Main = ({ currentPlayer, setCurrentPlayer }) => {
 		<main>
 			<Grid
 				player={currentPlayer}
-				playerMarks={playerMarks}
+				boxValues={boxValues}
 				markCell={handlePlayerMark}
 			/>
 		</main>

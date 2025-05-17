@@ -7,15 +7,20 @@ let cellBasis = [
 	[6, 7, 8],
 ];
 
-const Grid = ({ player, playerMarks, markCell }) => {
-
+const Grid = ({ player, boxValues, markCell }) => {
 	const gridJSX = rowBasis.map(i => {
 		return (
 			<div key={`row-${i}`} className={`row row-${i}`}>
 				{rowBasis.map(j => {
 					let cellNum = cellBasis[i][j];
-					let id = `cell-${cellNum}`;
-					return <Box key={id} id={id} mark={playerMarks[cellNum]} player={player} markCell={markCell} />;
+					return (
+						<Box
+							key={cellNum}
+							box={boxValues[cellNum]}
+							player={player}
+							markCell={markCell}
+						/>
+					);
 				})}
 			</div>
 		);
