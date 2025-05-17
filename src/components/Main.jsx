@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Grid from './Grid';
 import { getRandomElement } from '../shared/utils';
-import { palette } from '../shared/colors';
+import { palettes } from '../shared/colors';
 
 const Main = ({ currentPlayer, setCurrentPlayer }) => {
 	const [winner, setWinner] = useState(null);
@@ -9,6 +9,9 @@ const Main = ({ currentPlayer, setCurrentPlayer }) => {
 
 	function getNewBoxValues() {
 		let newBoxValues = [];
+		let palette = getRandomElement(palettes); // TEMP until ability to choose
+
+		// Create objects for each square in the grid
 		for (let i = 0; i < 9; i++) {
 			newBoxValues[i] = { id: i, mark: null, color: getRandomElement(palette) };
 		}
@@ -24,7 +27,8 @@ const Main = ({ currentPlayer, setCurrentPlayer }) => {
 		let haveWinner = false;
 		let winOptions = ['XXX', 'OOO'];
 		let b = boxValues;
-		let winPatterns = [
+		// Create patterns dynamically each time with updated boxValues
+		let patternsToCheck = [
 			`${b[0].mark}${b[1].mark}${b[2].mark}`,
 			`${b[3].mark}${b[4].mark}${b[5].mark}`,
 			`${b[6].mark}${b[7].mark}${b[8].mark}`,
@@ -34,16 +38,16 @@ const Main = ({ currentPlayer, setCurrentPlayer }) => {
 			`${b[0].mark}${b[4].mark}${b[8].mark}`,
 			`${b[2].mark}${b[4].mark}${b[6].mark}`,
 		];
-		for (let pattern of winPatterns) {
+		for (let pattern of patternsToCheck) {
 			if (winOptions.includes(pattern)) {
 				haveWinner = true;
 				break;
 			}
 		}
-		if (!haveWinner) {
-			setCurrentPlayer(currentPlayer === 'X' ? 'O' : 'X');
-		} else {
+		if (haveWinner) {
 			setWinner(currentPlayer);
+		} else {
+			setCurrentPlayer(currentPlayer === 'X' ? 'O' : 'X');
 		}
 	};
 
@@ -53,7 +57,7 @@ const Main = ({ currentPlayer, setCurrentPlayer }) => {
 
 	useEffect(() => {
 		if (winner) {
-			// TODO: display modal with winner announcement
+			// TODO: display modal with winner announcement instead
 			alert('We have a winner! Congrats, Player ' + winner + '!');
 			if (confirm('\nDo you want to play again?\n')) {
 				createNewGame();

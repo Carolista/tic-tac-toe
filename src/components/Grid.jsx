@@ -8,6 +8,8 @@ let cellBasis = [
 ];
 
 const Grid = ({ player, boxValues, markCell }) => {
+
+    // Create JSX for grid of 9 boxes
 	const gridJSX = rowBasis.map(i => {
 		return (
 			<div key={`row-${i}`} className={`row row-${i}`}>

@@ -4,10 +4,10 @@ import Main from './components/Main';
 import Footer from './components/Footer';
 import './App.css';
 
-// TODO: make it so boxes don't change color on every re-render
 // TODO: add a game won modal
-// TODO: add multiple palettes and a settings modal
-// TODO: add dark mode and light mode to settings modal
+// TODO: handle a no-win scenario
+// TODO: add a settings modal
+// TODO: add dark mode and light mode
 
 function App() {
 	const [currentPlayer, setCurrentPlayer ] = useState(["X", "O"][Math.floor(Math.random() * 2)]);

@@ -1,14 +1,11 @@
 import PlayerBox from './PlayerBox';
 
 const Footer = ({ player }) => {
+	// Displays both players and indicates which player is currently taking their turn
 	return (
 		<footer>
-			<div>
-				<PlayerBox player="X" isPlayerTurn={player == 'X'} />
-			</div>
-			<div>
-				<PlayerBox player="O" isPlayerTurn={player == 'O'} />
-			</div>
+			<PlayerBox player="X" isPlayerTurn={player == 'X'} />
+			<PlayerBox player="O" isPlayerTurn={player == 'O'} />
 		</footer>
 	);
 };
