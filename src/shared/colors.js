@@ -1,5 +1,16 @@
 // Palettes obtained from coolors.co
 
+const beach = [
+	'4783C7',
+	'5A8CB7',
+	'6E95A6',
+	'819E96',
+	'94A786',
+	'A7B076',
+	'BBB965',
+	'CEC255',
+];
+
 const bluesAndGreens = [
 	'd9ed92',
 	'b5e48c',
@@ -11,6 +22,17 @@ const bluesAndGreens = [
 	'1a759f',
 	'1e6091',
 	'184e77',
+];
+
+const cottonCandy = [
+	'59D4F0',
+	'6DC3E2',
+	'82B2D5',
+	'96A1C7',
+	'AB8FB9',
+	'BF7EAB',
+	'D46D9E',
+	'E85C90',
 ];
 
 const desertPastels = [
@@ -113,6 +135,16 @@ const oceanDepths = [
 	'979dac',
 ];
 
+const oceanSurface = [
+	'3FBED1',
+	'38A9C4',
+	'3094B8',
+	'297FAB',
+	'216A9E',
+	'1A5592',
+	'124085',
+];
+
 const pinks = [
 	'590d22',
 	'800f2f',
@@ -191,7 +223,9 @@ const sunset = [
 ];
 
 export const palettes = [
+	beach, // mine
 	bluesAndGreens,
+	cottonCandy, // mine
 	desertPastels,
 	desertDusk,
 	forestGreens,
@@ -200,6 +234,7 @@ export const palettes = [
 	icyBlues,
 	jewelTones,
 	oceanDepths,
+    oceanSurface, // mine
 	pinks,
 	rainbow,
 	skyBlues,
