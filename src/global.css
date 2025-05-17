@@ -77,7 +77,6 @@ h2 {
 	max-height: 20vw;
 	margin: 2px;
 	padding: 0;
-	/* border: 2px white solid; */
 }
 
 .x-mark,
@@ -87,10 +86,14 @@ h2 {
 	font-size: 20vw;
     font-weight: 700;
 	line-height: 0;
+    opacity: 1;
+    animation: full-fade-in 0.1s ease-in;
 }
 
 .translucent {
-    opacity: 0.5;
+    opacity: 0.4;
+    animation: partial-fade-in 0.3s ease-in;
+    animation-iteration-count: 1;
 }
 
 .player-box {
@@ -107,4 +110,22 @@ h2 {
 .alt-player {
 	color: #333;
 	background-color: white;
+}
+
+@keyframes full-fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes partial-fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 0.4;
+    }
 }
