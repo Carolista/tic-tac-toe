@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react';
 import Grid from './Grid';
+import GameOverModal from './GameOverModal';
 import { getRandomElement } from '../shared/utils';
 import { palettes } from '../shared/colors';
+import { createPortal } from 'react-dom';
 
 const Main = ({ currentPlayer, setCurrentPlayer }) => {
-	const [winner, setWinner] = useState(null);
 	const [boxValues, setBoxValues] = useState(getNewBoxValues());
+	const [winner, setWinner] = useState(null);
+	const [gameOver, setGameOver] = useState(false);
 
 	function getNewBoxValues() {
 		let newBoxValues = [];
@@ -19,9 +22,14 @@ const Main = ({ currentPlayer, setCurrentPlayer }) => {
 	}
 
 	const createNewGame = () => {
+		setGameOver(false);
 		setWinner(null);
 		setBoxValues(getNewBoxValues());
 	};
+
+    const closeModal = () => {
+        setGameOver(false);
+    }
 
 	const checkForWinner = () => {
 		let haveWinner = false;
@@ -57,11 +65,11 @@ const Main = ({ currentPlayer, setCurrentPlayer }) => {
 
 	useEffect(() => {
 		if (winner) {
-			// TODO: display modal with winner announcement instead
-			alert('We have a winner! Congrats, Player ' + winner + '!');
-			if (confirm('\nDo you want to play again?\n')) {
-				createNewGame();
-			}
+			setGameOver(true);
+			// alert('We have a winner! Congrats, Player ' + winner + '!');
+			// if (confirm('\nDo you want to play again?\n')) {
+			// 	createNewGame();
+			// }
 		}
 	}, [winner]);
 
@@ -81,6 +89,9 @@ const Main = ({ currentPlayer, setCurrentPlayer }) => {
 				boxValues={boxValues}
 				markCell={handlePlayerMark}
 			/>
+			{gameOver && createPortal(
+				<GameOverModal winner={winner} createNewGame={createNewGame} closeModal={closeModal} />, document.getElementById("modal-root")
+			)}
 		</main>
 	);
 };

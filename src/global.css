@@ -55,6 +55,19 @@ h2 {
 	line-height: 0;
 }
 
+button {
+    color: #333;
+    background-color: white;
+    font-family: 'Barrio', system-ui;
+    font-size: 3vw;
+    border: 2px solid #333;
+    outline: none;
+}
+
+.button-group {
+    gap: 2vw;
+}
+
 #grid {
 	flex-direction: column;
 	height: 60vw;
@@ -98,6 +111,25 @@ h2 {
 	opacity: 0.4;
 	animation: partial-fade-in 0.3s ease-in;
 	animation-iteration-count: 1;
+}
+
+#game-over-modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(51, 51, 51, 0.8);
+    color: white;
+    height: 100vh;
+    width: 100vw;
+    z-index: 10;
+}
+
+#congrats, #thanks {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10vw auto;
+    gap: 4vw;
 }
 
 .player-container {
