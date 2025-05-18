@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Main from './components/Main';
 import Footer from './components/Footer';
 import './App.css';
+import Palettes from './components/Palettes';
 
 // TODO: add a game won modal
 // TODO: handle a no-win scenario
@@ -17,6 +18,7 @@ function App() {
 			<Header />
 			<Main currentPlayer={currentPlayer} setCurrentPlayer={setCurrentPlayer} />
 			<Footer player={currentPlayer} />
+            <Palettes />
 		</div>
 	);
 }
