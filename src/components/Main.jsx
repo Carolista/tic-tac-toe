@@ -8,7 +8,7 @@ import { createPortal } from 'react-dom';
 const Main = ({ currentPlayer, setCurrentPlayer }) => {
 	const [boxValues, setBoxValues] = useState(getNewBoxValues());
 	const [winner, setWinner] = useState(null);
-	const [gameOver, setGameOver] = useState(false);
+	const [showModal, setShowModal] = useState(false);
 
 	function getNewBoxValues() {
 		let newBoxValues = [];
@@ -22,13 +22,13 @@ const Main = ({ currentPlayer, setCurrentPlayer }) => {
 	}
 
 	const createNewGame = () => {
-		setGameOver(false);
 		setWinner(null);
 		setBoxValues(getNewBoxValues());
+        closeModal();
 	};
 
     const closeModal = () => {
-        setGameOver(false);
+        setShowModal(false);
     }
 
 	const checkForWinner = () => {
@@ -65,11 +65,7 @@ const Main = ({ currentPlayer, setCurrentPlayer }) => {
 
 	useEffect(() => {
 		if (winner) {
-			setGameOver(true);
-			// alert('We have a winner! Congrats, Player ' + winner + '!');
-			// if (confirm('\nDo you want to play again?\n')) {
-			// 	createNewGame();
-			// }
+			setShowModal(true);
 		}
 	}, [winner]);
 
@@ -89,7 +85,7 @@ const Main = ({ currentPlayer, setCurrentPlayer }) => {
 				boxValues={boxValues}
 				markCell={handlePlayerMark}
 			/>
-			{gameOver && createPortal(
+			{showModal && createPortal(
 				<GameOverModal winner={winner} createNewGame={createNewGame} closeModal={closeModal} />, document.getElementById("modal-root")
 			)}
 		</main>
