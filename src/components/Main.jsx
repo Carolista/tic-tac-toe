@@ -7,6 +7,7 @@ import { createPortal } from 'react-dom';
 
 const Main = ({ currentPlayer, setCurrentPlayer }) => {
 	const [boxValues, setBoxValues] = useState(getNewBoxValues());
+    const [markCount, setMarkCount] = useState(0);
 	const [winner, setWinner] = useState(null);
 	const [showModal, setShowModal] = useState(false);
 
@@ -22,17 +23,26 @@ const Main = ({ currentPlayer, setCurrentPlayer }) => {
 	}
 
 	const createNewGame = () => {
+        closeModal();
 		setWinner(null);
 		setBoxValues(getNewBoxValues());
-        closeModal();
+        setMarkCount(0);
 	};
 
     const closeModal = () => {
         setShowModal(false);
     }
 
+    const handleNoWinner = () => {
+        setShowModal(true);
+    }
+
 	const checkForWinner = () => {
 		let haveWinner = false;
+        if (markCount === 9) {
+            handleNoWinner();
+            return;
+        } 
 		let winOptions = ['XXX', 'OOO'];
 		let b = boxValues;
 		// Create patterns dynamically each time with updated boxValues
@@ -75,6 +85,7 @@ const Main = ({ currentPlayer, setCurrentPlayer }) => {
 				return box.id == id ? { ...box, mark: currentPlayer } : { ...box };
 			});
 			setBoxValues(updatedBoxValues);
+            setMarkCount(markCount + 1);
 		}
 	};
 
