@@ -31,7 +31,7 @@ const GameOverModal = ({ winner, createNewGame, closeModal }) => {
 				</div>
 			) : (
 				<div id="congrats">
-                    {winner ? <h1>{`Congrats, Player ${winner}!`}</h1> : <h1>Game Over — No Winner</h1>}
+                    {winner ? <h1>{`Congrats, Player ${winner}!`}</h1> : <h1>Game Over (Draw)</h1>}
 					<div className="button-group">
 						<button onClick={handlePlayAgain}>Play Again</button>
 						<button onClick={handleDone}>Done</button>

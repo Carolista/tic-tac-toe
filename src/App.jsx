@@ -3,7 +3,7 @@ import Header from './components/Header';
 import Main from './components/Main';
 import Footer from './components/Footer';
 import './App.css';
-import Palettes from './components/Palettes';
+import Palettes from './components/Palettes'; // TEMP
 
 // TODO: add a settings modal
 // TODO: add dark mode and light mode
