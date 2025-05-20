@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
-import Grid from './Grid';
-import GameOverModal from './GameOverModal';
+import Grid from './gameplay/Grid';
+import GameOverModal from './gameplay/GameOverModal';
 import { getRandomElement } from '../shared/utils';
 import { palettes } from '../shared/colors';
 import { createPortal } from 'react-dom';
 
 const Main = ({ currentPlayer, setCurrentPlayer }) => {
 	const [boxValues, setBoxValues] = useState(getNewBoxValues());
-    const [markCount, setMarkCount] = useState(0);
+	const [markCount, setMarkCount] = useState(0);
 	const [winner, setWinner] = useState(null);
 	const [showModal, setShowModal] = useState(false);
 
@@ -23,26 +23,26 @@ const Main = ({ currentPlayer, setCurrentPlayer }) => {
 	}
 
 	const createNewGame = () => {
-        closeModal();
+		closeModal();
 		setWinner(null);
 		setBoxValues(getNewBoxValues());
-        setMarkCount(0);
+		setMarkCount(0);
 	};
 
-    const closeModal = () => {
-        setShowModal(false);
-    }
+	const closeModal = () => {
+		setShowModal(false);
+	};
 
-    const handleNoWinner = () => {
-        setShowModal(true);
-    }
+	const handleNoWinner = () => {
+		setShowModal(true);
+	};
 
 	const checkForWinner = () => {
 		let haveWinner = false;
-        if (markCount === 9) {
-            handleNoWinner();
-            return;
-        } 
+		if (markCount === 9) {
+			handleNoWinner();
+			return;
+		}
 		let winOptions = ['XXX', 'OOO'];
 		let b = boxValues;
 		// Create patterns dynamically each time with updated boxValues
@@ -85,7 +85,7 @@ const Main = ({ currentPlayer, setCurrentPlayer }) => {
 				return box.id == id ? { ...box, mark: currentPlayer } : { ...box };
 			});
 			setBoxValues(updatedBoxValues);
-            setMarkCount(markCount + 1);
+			setMarkCount(markCount + 1);
 		}
 	};
 
@@ -96,9 +96,15 @@ const Main = ({ currentPlayer, setCurrentPlayer }) => {
 				boxValues={boxValues}
 				markCell={handlePlayerMark}
 			/>
-			{showModal && createPortal(
-				<GameOverModal winner={winner} createNewGame={createNewGame} closeModal={closeModal} />, document.getElementById("modal-root")
-			)}
+			{showModal &&
+				createPortal(
+					<GameOverModal
+						winner={winner}
+						createNewGame={createNewGame}
+						closeModal={closeModal}
+					/>,
+					document.getElementById('modal-root')
+				)}
 		</main>
 	);
 };
