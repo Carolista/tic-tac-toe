@@ -1,19 +1,23 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import Grid from './gameplay/Grid';
 import GameOverModal from './gameplay/GameOverModal';
 import { getRandomElement } from '../shared/utils';
-import { palettes } from '../shared/colors';
 import { createPortal } from 'react-dom';
+import DarkModeContext from '../contexts/DarkModeContext';
+import PlayerContext from '../contexts/PlayerContext';
+import Player from './gameplay/Player';
 
-const Main = ({ currentPlayer, setCurrentPlayer }) => {
+const Main = ({ setCurrentPlayer, palette }) => {
 	const [boxValues, setBoxValues] = useState(getNewBoxValues());
 	const [markCount, setMarkCount] = useState(0);
 	const [winner, setWinner] = useState(null);
 	const [showModal, setShowModal] = useState(false);
 
+    const currentPlayer = useContext(PlayerContext);
+	const darkMode = useContext(DarkModeContext); // TEMP do I need this here?
+
 	function getNewBoxValues() {
 		let newBoxValues = [];
-		let palette = getRandomElement(palettes); // TEMP until ability to choose
 
 		// Create objects for each square in the grid
 		for (let i = 0; i < 9; i++) {
@@ -90,12 +94,12 @@ const Main = ({ currentPlayer, setCurrentPlayer }) => {
 	};
 
 	return (
-		<main>
+		<main className={darkMode ? 'dark-mode' : 'light-mode'}>
 			<Grid
-				player={currentPlayer}
 				boxValues={boxValues}
 				markCell={handlePlayerMark}
 			/>
+			<Player player={currentPlayer} />
 			{showModal &&
 				createPortal(
 					<GameOverModal

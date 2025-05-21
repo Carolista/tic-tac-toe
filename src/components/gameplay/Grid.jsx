@@ -7,7 +7,7 @@ let cellBasis = [
 	[6, 7, 8],
 ];
 
-const Grid = ({ player, boxValues, markCell }) => {
+const Grid = ({ boxValues, markCell }) => {
 
     // Create JSX for grid of 9 boxes
 	const gridJSX = rowBasis.map(i => {
@@ -19,7 +19,6 @@ const Grid = ({ player, boxValues, markCell }) => {
 						<Box
 							key={cellNum}
 							box={boxValues[cellNum]}
-							player={player}
 							markCell={markCell}
 						/>
 					);

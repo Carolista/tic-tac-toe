@@ -27,7 +27,7 @@ main {
 	padding: 0;
 }
 
-footer {
+#player {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
@@ -63,6 +63,7 @@ button {
 	padding: 2vw;
 	border: none;
 	outline: none;
+    cursor: pointer;
 }
 
 .button-group {
@@ -119,7 +120,6 @@ button {
 	top: 0;
 	left: 0;
 	background-color: rgba(51, 51, 51, 0.9);
-	color: white;
 	height: 100vh;
 	width: 100vw;
 	z-index: 10;
@@ -133,6 +133,7 @@ button {
 	text-align: center;
 	width: 60vw;
 	margin: 35vw auto auto;
+    padding: 5vw 5vw 3vw;
 	gap: 4vw;
 }
 
@@ -140,7 +141,6 @@ button {
 	justify-content: center;
 	width: 28vw;
 	height: 10vw;
-	border: 3px solid #333;
 }
 
 .current-player {
@@ -169,6 +169,24 @@ button {
 	flex-grow: 1;
 }
 
+#settings {
+    flex-direction: column;
+}
+
+button#dark-mode {
+    font-size: 4vw;
+}
+
+.dark-mode {
+    color: white;
+    background-color: #333;
+}
+
+.light-mode {
+    color: #333;
+    background-color: white;
+}
+
 @keyframes full-fade-in {
 	from {
 		opacity: 0;
@@ -191,7 +209,7 @@ button {
 	header {
 		height: 185px;
 	}
-	footer {
+	#player {
 		height: 185px;
 		gap: 22px;
 	}
@@ -232,6 +250,7 @@ button {
 	#thanks {
 		width: 555px;
 		margin: 323px auto auto;
+        padding: 46px 46px 28px;
 		gap: 37px;
 	}
 	.player-container {
@@ -252,7 +271,7 @@ button {
     header {
         height: 90px;
     }
-	footer {
+	#player {
 		height: 130px;
 		flex-direction: column;
 	}
@@ -298,7 +317,9 @@ button {
 	}
 	#congrats,
 	#thanks {
+        width: 270px;
 		margin: 158px auto auto;
+        padding: 23px 23px 14px;
 		gap: 18px;
 	}
 	#palettes {

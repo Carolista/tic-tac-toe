@@ -1,8 +1,8 @@
 const Palette = ({ palette }) => {
 
-    const paletteJSX = palette.map(color => {
+    const paletteJSX = palette.map((color, i) => {
         return (
-            <div className="color" style={{backgroundColor: `#${color}`}}></div>
+            <div key={i} className="color" style={{backgroundColor: `#${color}`}}></div>
         )
     });
 

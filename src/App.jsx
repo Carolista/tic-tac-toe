@@ -1,13 +1,14 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Header from './components/Header';
 import Main from './components/Main';
-import Footer from './components/Footer';
 import './App.css';
-import Palettes from './components/settings/Palettes'; // TEMP
-
+import Settings from './components/settings/Settings';
+import DarkModeContext from './contexts/DarkModeContext';
+import PlayerContext from './contexts/PlayerContext';
+import { getRandomElement } from './shared/utils';
+import { palettes } from './shared/colors';
 
 // TODO: add a settings modal
-// TODO: add dark mode and light mode
 // TODO: let player choose a color palette
 
 // TODO: add localStorage for saving settings for next time
@@ -19,13 +20,30 @@ function App() {
 	const [currentPlayer, setCurrentPlayer] = useState(
 		['X', 'O'][Math.floor(Math.random() * 2)]
 	);
+	const [palette, setPalette] = useState(getRandomElement(palettes));
+	const [darkMode, setDarkMode] = useState(false);
+
+	useEffect(() => {
+		document
+			.querySelector('html')
+			.classList.add(darkMode ? 'dark-mode' : 'light-mode');
+		document
+			.querySelector('html')
+			.classList.remove(darkMode ? 'light-mode' : 'dark-mode');
+	}, [darkMode]);
 
 	return (
 		<div id="window">
-			<Header />
-			<Main currentPlayer={currentPlayer} setCurrentPlayer={setCurrentPlayer} />
-			<Footer player={currentPlayer} />
-			{/* <Palettes /> TEMP for testing */}
+            <PlayerContext.Provider value={currentPlayer}>
+                <DarkModeContext.Provider value={darkMode}>
+                    <Header />
+                    <Main
+                        setCurrentPlayer={setCurrentPlayer}
+                        palette={palette}
+                    />
+                    <Settings setDarkMode={setDarkMode} />
+                </DarkModeContext.Provider>
+            </PlayerContext.Provider>
 		</div>
 	);
 }

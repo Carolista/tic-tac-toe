@@ -2,8 +2,8 @@ import { palettes } from '../../shared/colors';
 import Palette from './Palette';
 
 const Palettes = () => {
-	const palettesJSX = palettes.map(palette => {
-		return <Palette palette={palette} />;
+	const palettesJSX = palettes.map((palette, i) => {
+		return <Palette key={i} palette={palette} />;
 	});
 
 	return <div id="palettes">{palettesJSX}</div>;
