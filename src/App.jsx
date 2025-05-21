@@ -5,11 +5,11 @@ import './App.css';
 import Settings from './components/settings/Settings';
 import DarkModeContext from './contexts/DarkModeContext';
 import PlayerContext from './contexts/PlayerContext';
+import PaletteContext from './contexts/PaletteContext';
 import { getRandomElement } from './shared/utils';
 import { palettes } from './shared/colors';
 
 // TODO: add a settings modal
-// TODO: let player choose a color palette
 
 // TODO: add localStorage for saving settings for next time
 // TODO: provide stats on past games using localStorage
@@ -34,16 +34,15 @@ function App() {
 
 	return (
 		<div id="window">
-            <PlayerContext.Provider value={currentPlayer}>
-                <DarkModeContext.Provider value={darkMode}>
-                    <Header />
-                    <Main
-                        setCurrentPlayer={setCurrentPlayer}
-                        palette={palette}
-                    />
-                    <Settings setDarkMode={setDarkMode} />
-                </DarkModeContext.Provider>
-            </PlayerContext.Provider>
+			<PaletteContext.Provider value={palette}>
+				<PlayerContext.Provider value={currentPlayer}>
+					<DarkModeContext.Provider value={darkMode}>
+						<Header />
+						<Main setCurrentPlayer={setCurrentPlayer} palette={palette} />
+						<Settings setPalette={setPalette} setDarkMode={setDarkMode} />
+					</DarkModeContext.Provider>
+				</PlayerContext.Provider>
+			</PaletteContext.Provider>
 		</div>
 	);
 }

@@ -163,6 +163,7 @@ button {
 	flex-direction: row;
 	height: 6vw;
 	margin-bottom: 1vw;
+    cursor: pointer;
 }
 
 .color {

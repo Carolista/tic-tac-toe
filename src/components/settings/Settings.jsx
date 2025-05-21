@@ -1,8 +1,8 @@
 import { useContext } from 'react';
 import DarkModeContext from '../../contexts/DarkModeContext';
-import Palettes from '../../components/settings/Palettes'; // TEMP
+import Palettes from '../../components/settings/Palettes';
 
-const Settings = ({ setDarkMode }) => {
+const Settings = ({ setPalette, setDarkMode }) => {
 	const darkMode = useContext(DarkModeContext);
 
 	const componentToHex = c => {
@@ -36,7 +36,7 @@ const Settings = ({ setDarkMode }) => {
 				onClick={toggleDarkMode}>
 				DARK MODE: {darkMode ? 'ON' : 'OFF'}
 			</button>
-			<Palettes />
+			<Palettes setPalette={setPalette} />
 		</div>
 	);
 };

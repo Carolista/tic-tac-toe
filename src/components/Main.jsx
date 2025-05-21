@@ -6,15 +6,17 @@ import { createPortal } from 'react-dom';
 import DarkModeContext from '../contexts/DarkModeContext';
 import PlayerContext from '../contexts/PlayerContext';
 import Player from './gameplay/Player';
+import PaletteContext from '../contexts/PaletteContext';
 
-const Main = ({ setCurrentPlayer, palette }) => {
+const Main = ({ setCurrentPlayer }) => {
+	const currentPlayer = useContext(PlayerContext);
+	const darkMode = useContext(DarkModeContext);
+	const palette = useContext(PaletteContext);
+
 	const [boxValues, setBoxValues] = useState(getNewBoxValues());
 	const [markCount, setMarkCount] = useState(0);
 	const [winner, setWinner] = useState(null);
 	const [showModal, setShowModal] = useState(false);
-
-    const currentPlayer = useContext(PlayerContext);
-	const darkMode = useContext(DarkModeContext); // TEMP do I need this here?
 
 	function getNewBoxValues() {
 		let newBoxValues = [];
@@ -25,6 +27,19 @@ const Main = ({ setCurrentPlayer, palette }) => {
 		}
 		return newBoxValues;
 	}
+
+	function updateColors() {
+        // Create objects for each square in the grid
+		let newBoxValues = boxValues.map((obj, i) => {
+            return { ...boxValues[i], color: getRandomElement(palette) };
+        });
+
+		setBoxValues(newBoxValues);
+	}
+
+	useEffect(() => {
+		updateColors();
+	}, [palette]);
 
 	const createNewGame = () => {
 		closeModal();
@@ -95,10 +110,7 @@ const Main = ({ setCurrentPlayer, palette }) => {
 
 	return (
 		<main className={darkMode ? 'dark-mode' : 'light-mode'}>
-			<Grid
-				boxValues={boxValues}
-				markCell={handlePlayerMark}
-			/>
+			<Grid boxValues={boxValues} markCell={handlePlayerMark} />
 			<Player player={currentPlayer} />
 			{showModal &&
 				createPortal(

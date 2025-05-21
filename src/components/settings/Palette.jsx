@@ -1,4 +1,8 @@
-const Palette = ({ palette }) => {
+const Palette = ({ id, palette, setPalette }) => {
+
+    const handleChangePalette = () => {
+        setPalette(palette);
+    }
 
     const paletteJSX = palette.map((color, i) => {
         return (
@@ -7,7 +11,7 @@ const Palette = ({ palette }) => {
     });
 
     return (
-        <div className="palette">{paletteJSX}</div>
+        <div id={`palette-${id}`} className="palette" onClick={handleChangePalette}>{paletteJSX}</div>
     )
 }
 
