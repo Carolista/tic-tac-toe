@@ -11,13 +11,14 @@ const Settings = ({ setPalette, setDarkMode }) => {
 
 	return (
 		<div id="settings" className={darkMode ? 'dark-mode' : 'light-mode'}>
-			<button
-				id="dark-mode"
-				className={darkMode ? 'dark-mode' : 'light-mode'}
-				onClick={toggleDarkMode}>
-				DARK MODE: {darkMode ? 'ON' : 'OFF'}
-			</button>
 			<Palettes setPalette={setPalette} />
+			<div id="dark-mode">
+                DARK MODE: 
+				<span id="on-off"
+					onClick={toggleDarkMode}>
+					{darkMode ? 'ON' : 'OFF'}
+				</span>
+			</div>
 		</div>
 	);
 };

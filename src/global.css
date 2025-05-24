@@ -154,15 +154,16 @@ button {
 }
 
 #palettes {
-	flex-direction: column;
+    flex-direction: column;
 	width: 60vw;
 	margin: 30px auto;
+    gap: 1vw;
 }
 
 .palette {
 	flex-direction: row;
+    width: 100%;
 	height: 6vw;
-	margin-bottom: 1vw;
     cursor: pointer;
 }
 
@@ -174,8 +175,13 @@ button {
     flex-direction: column;
 }
 
-button#dark-mode {
+#dark-mode {
     font-size: 4vw;
+    margin: 0 auto;
+}
+
+#on-off {
+    cursor: pointer;
 }
 
 .dark-mode {
@@ -261,10 +267,11 @@ button#dark-mode {
 	}
 	#palettes {
 		width: 555px;
+        gap: 9px;
 	}
 	.palette {
 		height: 56px;
-		margin-bottom: 11px;
+        width: 555px;
 	}
 }
 
@@ -284,8 +291,8 @@ button#dark-mode {
 	}
 	button {
 		font-size: 27px;
-		height: 50px;
-		width: fit-content;
+		height: fit-content;
+		width: 100%;
 		padding: 9px;
 	}
 	.button-group {
@@ -325,9 +332,10 @@ button#dark-mode {
 	}
 	#palettes {
 		width: 270px;
+        gap: 5px;
 	}
 	.palette {
 		height: 27px;
-		margin-bottom: 4px;
+        width: 270px
 	}
 }
