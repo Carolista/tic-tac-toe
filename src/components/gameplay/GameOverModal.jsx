@@ -1,4 +1,4 @@
-import Modal from '../shared/Modal';
+import Modal from '../Modal';
 
 const GameOverModal = ({ winner, closeModal }) => {
 	return (

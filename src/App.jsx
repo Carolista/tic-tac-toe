@@ -12,7 +12,6 @@ import { getRandomElement } from './shared/utils';
 import { palettes } from './shared/colors';
 
 // FIXME: Eliminate context where possible and modify remaining to include setter
-// TODO: if not using Button, delete component
 
 // POSSIBLE FUTURE UPDATES
 // TODO: add localStorage for saving settings for next time
