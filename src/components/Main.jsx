@@ -7,8 +7,8 @@ import CurrentPlayerContext from '../contexts/CurrentPlayerContext.js';
 import Players from './gameplay/Players';
 import CurrentPaletteContext from '../contexts/CurrentPaletteContext.js';
 
-const Main = ({ setCurrentPlayer }) => {
-	const currentPlayer = useContext(CurrentPlayerContext);
+const Main = () => {
+	const { currentPlayer, setCurrentPlayer } = useContext(CurrentPlayerContext);
 	const { currentPalette } = useContext(CurrentPaletteContext);
 
 	const [squareValues, setSquareValues] = useState(getNewSquareValues());

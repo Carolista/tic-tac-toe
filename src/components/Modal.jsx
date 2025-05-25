@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import DarkModeContext from '../contexts/DarkModeContext';
 
 const Modal = ({ id, closeModal, align, children }) => {
-	const darkMode = useContext(DarkModeContext);
+	const { darkMode } = useContext(DarkModeContext);
 
 	return (
 		<div id={id} className="modal">

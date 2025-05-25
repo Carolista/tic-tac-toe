@@ -44,14 +44,13 @@ function App() {
 	return (
 		<div id="window" className={darkMode ? 'dark-mode' : 'light-mode'}>
 			<CurrentPaletteContext.Provider value={{ currentPalette, setCurrentPalette }}>
-				<CurrentPlayerContext.Provider value={currentPlayer}>
-					<DarkModeContext.Provider value={darkMode}>
+				<CurrentPlayerContext.Provider value={{ currentPlayer, setCurrentPlayer }}>
+					<DarkModeContext.Provider value={{ darkMode, setDarkMode }}>
 						<Header />
-						<Main setCurrentPlayer={setCurrentPlayer} />
+						<Main />
 						{showSettingsModal &&
 							createPortal(
 								<SettingsModal
-									setDarkMode={setDarkMode}
 									closeModal={handleCloseModal}
 								/>,
 								document.getElementById('modal-root')

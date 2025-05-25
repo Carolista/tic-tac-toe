@@ -2,7 +2,7 @@ import { useContext, useState } from 'react';
 import DarkModeContext from '../../contexts/DarkModeContext';
 
 const Player = ({ currentPlayer, isPlayerTurn }) => {
-	const darkMode = useContext(DarkModeContext);
+	const { darkMode } = useContext(DarkModeContext);
 
 	const [shouldScale, setShouldScale] = useState(false);
 

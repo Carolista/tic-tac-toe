@@ -4,7 +4,7 @@ import './gameplay.css';
 import CurrentPlayerContext from '../../contexts/CurrentPlayerContext';
 
 const Players = ({ resetGame }) => {
-	const currentPlayer = useContext(CurrentPlayerContext);
+	const { currentPlayer } = useContext(CurrentPlayerContext);
 
 	return (
 		<div id="players">

@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import DarkModeContext from '../contexts/DarkModeContext';
 
 const Header = () => {
-	const darkMode = useContext(DarkModeContext);
+	const { darkMode } = useContext(DarkModeContext);
 
 	return (
 		<header>

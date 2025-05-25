@@ -3,7 +3,7 @@ import DarkModeContext from '../../contexts/DarkModeContext';
 import CurrentPaletteContext from '../../contexts/CurrentPaletteContext';
 
 const Palette = ({ id, palette, setPalette }) => {
-	const darkMode = useContext(DarkModeContext);
+	const { darkMode } = useContext(DarkModeContext);
 	const { currentPalette, setCurrentPalette } = useContext(
 		CurrentPaletteContext
 	);

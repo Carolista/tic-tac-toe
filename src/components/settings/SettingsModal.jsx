@@ -4,8 +4,8 @@ import Palettes from './Palettes';
 import './settings.css';
 import Modal from '../Modal';
 
-const SettingsModal = ({ setDarkMode, closeModal }) => {
-	const darkMode = useContext(DarkModeContext);
+const SettingsModal = ({ closeModal }) => {
+	const { darkMode, setDarkMode } = useContext(DarkModeContext);
 
 	const [shouldScale, setShouldScale] = useState(false);
 
