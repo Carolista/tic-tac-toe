@@ -1,5 +1,3 @@
-import Button from './Button';
-
 const Modal = ({ id, closeModal, children }) => {
 	return (
 		<div id={id} className="modal">
