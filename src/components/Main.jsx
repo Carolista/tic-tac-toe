@@ -40,7 +40,8 @@ const Main = () => {
 	}
 
 	useEffect(() => {
-		updateColors();
+        updateColors();
+        // eslint-disable-next-line
 	}, [currentPalette]);
 
 	const createNewGame = () => {
@@ -90,7 +91,8 @@ const Main = () => {
 	};
 
 	useEffect(() => {
-		if (currentPlayer && !winner) checkForWinner();
+        if (currentPlayer && !winner) checkForWinner();
+        // eslint-disable-next-line
 	}, [squareValues]);
 
 	useEffect(() => {

@@ -141,19 +141,6 @@ const lavenderMint = [
 	'6B3B87',
 ];
 
-const lilypad = [
-	'FFDCD6',
-	'F7DBD4',
-	'EFDAD1',
-	'E6D9CF',
-	'DED8CD',
-	'D6D7CA',
-	'CED6C8',
-	'C5D5C6',
-	'BDD4C3',
-	'B5D3C1',
-];
-
 const mocha = [
 	'9B8074',
 	'91786C',
@@ -232,19 +219,6 @@ const redwood = [
 	'2B4213',
 ];
 
-const septemberSkies = [
-	'E3F2FD',
-	'CBE1F3',
-	'B3D0E9',
-	'9CBFDE',
-	'84AED4',
-	'6C9DCA',
-	'548CC0',
-	'3D7BB5',
-	'256AAB',
-	'0D59A1',
-];
-
 const spring = [
 	'C4C444',
 	'B0BB47',
@@ -310,21 +284,8 @@ const wine = [
 	'5D2037',
 ];
 
-const winterLake = [
-	'97D3DF',
-	'8DC6D8',
-	'83B8D0',
-	'79ABC9',
-	'6F9EC2',
-	'6490BA',
-	'5A83B3',
-	'5076AC',
-	'4668A4',
-	'3C5B9D',
-];
-
 export const palettes = [
-    canoe,
+	canoe,
 	cottonCandy,
 	dianthus,
 	wine,
@@ -334,14 +295,11 @@ export const palettes = [
 	petra,
 	caramelMacchiato,
 	sunrise,
-	// lilypad,
 	cacti,
 	redwood,
 	spring,
 	summerLake,
 	beach,
-    // septemberSkies,
-	// winterLake,
 	iceberg,
 	oceanSurface,
 	oceanDepths,
