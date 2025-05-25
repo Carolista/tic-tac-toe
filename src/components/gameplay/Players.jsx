@@ -10,8 +10,8 @@ const Players = ({ currentPlayer, resetGame }) => {
 					<Player currentPlayer="O" isPlayerTurn={currentPlayer == 'O'} />
 				</>
 			) : (
-				<div id="play-again">
-					<h2 onClick={resetGame}>PLAY AGAIN?</h2>
+				<div id="reset-game">
+					<h2 onClick={resetGame}>Reset Game</h2>
 				</div>
 			)}
 		</div>

@@ -3,7 +3,7 @@ body {
 	font-size: 1.5rem;
 	margin: 0;
 	padding: 0;
-    cursor: default;
+	cursor: default;
 	box-sizing: border-box;
 }
 
@@ -45,21 +45,10 @@ h1 {
 	margin: 0;
 }
 
-h2 {
+h2, #dark-mode-toggle {
 	font-family: 'Barrio', system-ui;
 	font-size: 6vw;
 	margin: auto 0;
-}
-
-button {
-	color: #333;
-	background-color: white;
-	font-family: 'Barrio', system-ui;
-	font-size: 6vw;
-	padding: 2vw;
-	border: none;
-	outline: none;
-	cursor: pointer;
 }
 
 .button-group {
@@ -73,7 +62,7 @@ button {
 	top: 0;
 	left: 0;
 	color: white;
-	background-color: rgba(51, 51, 51, 0.9);
+	background-color: rgba(51, 51, 51, 0.85);
 	min-height: 100vh;
 	height: fit-content;
 	width: 100vw;
@@ -84,14 +73,20 @@ button {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-end;
-	margin: auto;
+	padding: 2vw;
+}
+
+.align-top {
+    margin: 2vw auto;
+}
+
+.align-middle {
+    margin: auto;
 }
 
 .modal-button {
-	color: white;
 	background-color: transparent;
-	transform: translate(-5px, 30px);
-    cursor: pointer;
+	cursor: pointer;
 	z-index: 11;
 }
 
@@ -99,11 +94,15 @@ button {
 	cursor: pointer;
 }
 
+.scale-up {
+	animation: scale-up 1s ease-in infinite;
+}
+
 .wobble {
-    animation: none;
+	animation: none;
 }
 .wobble:hover {
-	animation: wobble 0.7s ease-in-out;
+	animation: wobble 0.5s ease-in-out;
 }
 
 .dark-mode {
@@ -114,6 +113,36 @@ button {
 .light-mode {
 	color: #333;
 	background-color: white;
+}
+
+@media screen and (min-width: 925px) {
+	header {
+		height: 185px;
+	}
+	h1 {
+		font-size: 102px;
+	}
+	h2, #dark-mode-toggle {
+		font-size: 55px;
+	}
+	.button-group {
+		gap: 28px;
+	}
+}
+
+@media screen and (max-width: 450px) {
+	header {
+		height: 90px;
+	}
+	h1 {
+		font-size: 49px;
+	}
+	h2, #dark-mode-toggle {
+		font-size: 27px;
+	}
+	.button-group {
+		gap: 13px;
+	}
 }
 
 @keyframes full-fade-in {
@@ -135,11 +164,14 @@ button {
 }
 
 @keyframes scale-up {
-	from {
+	0% {
 		transform: scale(1);
 	}
-	to {
-		transform: scale(1.2);
+    60% {
+        transform: scale(1.05)
+    }
+	100% {
+		transform: scale(1);
 	}
 }
 
@@ -176,45 +208,5 @@ button {
 	}
 	100% {
 		transform: scale(1);
-	}
-}
-
-@media screen and (min-width: 925px) {
-	header {
-		height: 185px;
-	}
-	h1 {
-		font-size: 102px;
-	}
-	h2 {
-		font-size: 55px;
-	}
-	button {
-		font-size: 55px;
-		padding: 18px;
-	}
-	.button-group {
-		gap: 28px;
-	}
-}
-
-@media screen and (max-width: 450px) {
-	header {
-		height: 90px;
-	}
-	h1 {
-		font-size: 49px;
-	}
-	h2 {
-		font-size: 27px;
-	}
-	button {
-		font-size: 27px;
-		height: fit-content;
-		width: 100%;
-		padding: 9px;
-	}
-	.button-group {
-		gap: 13px;
 	}
 }

@@ -1,6 +1,7 @@
 #settings-content {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 #palettes {
@@ -23,11 +24,6 @@
 
 #settings {
 	flex-direction: column;
-}
-
-#dark-mode {
-	font-size: 4vw;
-	margin: 0 auto;
 }
 
 #on-off {
