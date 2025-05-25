@@ -1,22 +1,20 @@
 import { useEffect, useState, useContext } from 'react';
+import { createPortal } from 'react-dom';
 import Grid from './gameplay/Grid';
 import GameOverModal from './gameplay/GameOverModal';
 import { getRandomElement } from '../shared/utils';
-import { createPortal } from 'react-dom';
-import DarkModeContext from '../contexts/DarkModeContext';
-import PlayerContext from '../contexts/PlayerContext';
+import PlayerContext from '../contexts/PlayerContext.js';
 import Players from './gameplay/Players';
 import PaletteContext from '../contexts/PaletteContext';
 
 const Main = ({ setCurrentPlayer }) => {
 	const currentPlayer = useContext(PlayerContext);
-	const darkMode = useContext(DarkModeContext);
 	const palette = useContext(PaletteContext);
 
 	const [squareValues, setSquareValues] = useState(getNewSquareValues());
 	const [markCount, setMarkCount] = useState(0);
 	const [winner, setWinner] = useState(null);
-	const [showModal, setShowModal] = useState(false);
+	const [showGameOverModal, setShowGameOverModal] = useState(false);
 
 	function getNewSquareValues() {
 		let newSquareValues = [];
@@ -46,26 +44,24 @@ const Main = ({ setCurrentPlayer }) => {
 	}, [palette]);
 
 	const createNewGame = () => {
-		closeModal();
 		setWinner(null);
 		setSquareValues(getNewSquareValues());
 		setMarkCount(0);
+		setCurrentPlayer(getRandomElement(['X', 'O']));
 	};
 
 	const closeModal = () => {
-		setShowModal(false);
+		setShowGameOverModal(false);
+		setCurrentPlayer(null);
 	};
 
 	const handleNoWinner = () => {
-		setShowModal(true);
+		setShowGameOverModal(true);
+		setCurrentPlayer(null);
 	};
 
 	const checkForWinner = () => {
 		let haveWinner = false;
-		if (markCount === 9) {
-			handleNoWinner();
-			return;
-		}
 		let winOptions = ['XXX', 'OOO'];
 		let b = squareValues;
 		// Create patterns dynamically each time with updated squareValues
@@ -88,22 +84,23 @@ const Main = ({ setCurrentPlayer }) => {
 		if (haveWinner) {
 			setWinner(currentPlayer);
 		} else {
-			setCurrentPlayer(currentPlayer === 'X' ? 'O' : 'X');
+			if (markCount === 9) handleNoWinner();
+			else setCurrentPlayer(currentPlayer === 'X' ? 'O' : 'X');
 		}
 	};
 
 	useEffect(() => {
-		if (!winner) checkForWinner();
+		if (currentPlayer && !winner) checkForWinner();
 	}, [squareValues]);
 
 	useEffect(() => {
 		if (winner) {
-			setShowModal(true);
+			setShowGameOverModal(true);
 		}
 	}, [winner]);
 
 	const handlePlayerMark = id => {
-		if (!squareValues[id].mark) {
+		if (!winner && !squareValues[id].mark) {
 			let updatedSquareValues = squareValues.map(square => {
 				return square.id == id
 					? { ...square, mark: currentPlayer }
@@ -115,10 +112,10 @@ const Main = ({ setCurrentPlayer }) => {
 	};
 
 	return (
-		<main className={darkMode ? 'dark-mode' : 'light-mode'}>
+		<main>
 			<Grid squareValues={squareValues} markCell={handlePlayerMark} />
-			<Players player={currentPlayer} />
-			{showModal &&
+			<Players currentPlayer={currentPlayer} resetGame={createNewGame} />
+			{showGameOverModal &&
 				createPortal(
 					<GameOverModal
 						winner={winner}

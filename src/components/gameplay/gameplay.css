@@ -38,7 +38,7 @@
 }
 
 .translucent {
-	opacity: 0.4;
+	opacity: 0.3;
 	animation: partial-fade-in 0.3s ease-in;
 	animation-iteration-count: 1;
 }
@@ -53,8 +53,8 @@
 	gap: 3vw;
 }
 
-#congrats,
-#thanks {
+#game-over {
+	background-color: #333;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
@@ -69,6 +69,20 @@
 	justify-content: center;
 	width: 28vw;
 	height: 10vw;
+	cursor: default;
+}
+
+#play-again {
+	justify-content: center;
+	width: 60vw;
+}
+
+.scale-up {
+	transition: all 0.5s ease-in-out;
+}
+
+.scale-up:hover {
+	transform: scale(1.05);
 }
 
 @media screen and (min-width: 925px) {
@@ -96,8 +110,7 @@
 	.o-mark {
 		font-size: 203px;
 	}
-	#congrats,
-	#thanks {
+	#game-over {
 		width: 555px;
 		padding: 46px 46px 28px;
 		gap: 37px;
@@ -106,6 +119,9 @@
 		width: 260px;
 		height: 88px;
 		border: 4px solid #333;
+	}
+	#play-again {
+		width: 555px;
 	}
 }
 
@@ -139,10 +155,12 @@
 		height: 40px;
 		border: 2px solid #333;
 	}
-	#congrats,
-	#thanks {
+	#game-over {
 		width: 270px;
 		padding: 23px 23px 14px;
 		gap: 18px;
+	}
+	#play-again {
+		width: 270px;
 	}
 }

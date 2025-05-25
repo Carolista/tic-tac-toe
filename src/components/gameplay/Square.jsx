@@ -1,13 +1,12 @@
 import { useState, useContext } from 'react';
-import PlayerContext from '../../contexts/PlayerContext';
+import PlayerContext from '../../contexts/PlayerContext.js';
 
 const Square = ({ square, markCell }) => {
+	const currentPlayer = useContext(PlayerContext);
 
-    const player = useContext(PlayerContext);
-
-    // Controls animation during hover
+	// Controls animation during hover
 	const [showTranslucentMark, setShowTranslucentMark] = useState(false);
-    
+
 	const handleMouseEnter = () => {
 		if (!square.mark) setShowTranslucentMark(true);
 	};
@@ -29,10 +28,14 @@ const Square = ({ square, markCell }) => {
 			onClick={handleClick}
 			onMouseEnter={handleMouseEnter}
 			onMouseLeave={handleMouseLeave}>
-			{square.mark && <span className={`${square.mark.toLowerCase()}-mark`}>{square.mark}</span>}
-			{showTranslucentMark && (
-				<span className={`${player.toLowerCase()}-mark translucent`}>
-					{player}
+			{square.mark && (
+				<span className={`${square.mark.toLowerCase()}-mark`}>
+					{square.mark}
+				</span>
+			)}
+			{currentPlayer && showTranslucentMark && (
+				<span className={`${currentPlayer.toLowerCase()}-mark translucent`}>
+					{currentPlayer}
 				</span>
 			)}
 		</div>

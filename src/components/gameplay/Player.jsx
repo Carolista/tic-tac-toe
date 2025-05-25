@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import DarkModeContext from '../../contexts/DarkModeContext';
 
-const Player = ({ player, isPlayerTurn }) => {
+const Player = ({ currentPlayer, isPlayerTurn }) => {
 	const darkMode = useContext(DarkModeContext);
 
 	let playerClass = isPlayerTurn
@@ -9,12 +9,15 @@ const Player = ({ player, isPlayerTurn }) => {
 			? 'light-mode'
 			: 'dark-mode'
 		: darkMode
-            ? 'dark-mode'
-            : 'light-mode';
+		? 'dark-mode'
+		: 'light-mode';
 
 	return (
-		<div className={`player-container ${playerClass}`}>
-			<h2>Player {player}</h2>
+		<div
+			className={`player-container ${playerClass} ${
+				isPlayerTurn && 'scale-up'
+			}`}>
+			<h2>Player {currentPlayer}</h2>
 		</div>
 	);
 };

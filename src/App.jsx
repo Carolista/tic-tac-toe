@@ -6,7 +6,7 @@ import Main from './components/Main';
 import Footer from './components/Footer';
 import SettingsModal from './components/settings/SettingsModal';
 import DarkModeContext from './contexts/DarkModeContext';
-import PlayerContext from './contexts/PlayerContext';
+import PlayerContext from './contexts/PlayerContext.js';
 import PaletteContext from './contexts/PaletteContext';
 import { getRandomElement } from './shared/utils';
 import { palettes } from './shared/colors';
@@ -28,6 +28,7 @@ function App() {
 	const [palette, setPalette] = useState(getRandomElement(palettes));
 	const [darkMode, setDarkMode] = useState(false);
 
+	// Handle topmost level of DOM so that viewport also matches
 	useEffect(() => {
 		document
 			.querySelector('html')
@@ -42,7 +43,7 @@ function App() {
 	const handleCloseModal = () => setShowSettingsModal(false);
 
 	return (
-		<div id="window">
+		<div id="window" className={darkMode ? 'dark-mode' : 'light-mode'}>
 			<PaletteContext.Provider value={palette}>
 				<PlayerContext.Provider value={currentPlayer}>
 					<DarkModeContext.Provider value={darkMode}>

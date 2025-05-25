@@ -5,7 +5,7 @@ const Header = () => {
 	const darkMode = useContext(DarkModeContext);
 
 	return (
-		<header className={darkMode ? 'dark-mode' : 'light-mode'}>
+		<header>
 			<h1>Tic Tac Toe</h1>
 		</header>
 	);

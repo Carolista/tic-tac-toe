@@ -1,19 +1,19 @@
 import Player from './Player';
-import { useContext } from 'react';
-import DarkModeContext from '../../contexts/DarkModeContext';
 import './gameplay.css';
 
-const Players = ({ player }) => {
-
-	const darkMode = useContext(DarkModeContext);
-
-    // TODO: This might be an unnecessary abstraction
-
-	// Displays both players and indicates which player is currently taking their turn
+const Players = ({ currentPlayer, resetGame }) => {
 	return (
-		<div id="players" className={darkMode ? 'dark-mode' : 'light-mode'}>
-			<Player player="X" isPlayerTurn={player == 'X'} />
-			<Player player="O" isPlayerTurn={player == 'O'} />
+		<div id="players">
+			{currentPlayer ? (
+				<>
+					<Player currentPlayer="X" isPlayerTurn={currentPlayer == 'X'} />
+					<Player currentPlayer="O" isPlayerTurn={currentPlayer == 'O'} />
+				</>
+			) : (
+				<div id="play-again">
+					<h2 onClick={resetGame}>PLAY AGAIN?</h2>
+				</div>
+			)}
 		</div>
 	);
 };
