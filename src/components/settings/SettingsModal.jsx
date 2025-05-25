@@ -1,8 +1,10 @@
 import { useContext } from 'react';
 import DarkModeContext from '../../contexts/DarkModeContext';
-import Palettes from '../../components/settings/Palettes';
+import Palettes from './Palettes';
+import './settings.css';
+import Modal from '../shared/Modal';
 
-const Settings = ({ setPalette, setDarkMode }) => {
+const SettingsModal = ({ setPalette, setDarkMode, closeModal }) => {
 	const darkMode = useContext(DarkModeContext);
 
 	const toggleDarkMode = () => {
@@ -10,17 +12,16 @@ const Settings = ({ setPalette, setDarkMode }) => {
 	};
 
 	return (
-		<div id="settings" className={darkMode ? 'dark-mode' : 'light-mode'}>
+		<Modal id="settings-modal" closeModal={closeModal}>
 			<Palettes setPalette={setPalette} />
 			<div id="dark-mode">
-                DARK MODE: 
-				<span id="on-off"
-					onClick={toggleDarkMode}>
+				DARK MODE:
+				<span id="on-off" onClick={toggleDarkMode}>
 					{darkMode ? 'ON' : 'OFF'}
 				</span>
 			</div>
-		</div>
+		</Modal>
 	);
 };
 
-export default Settings;
+export default SettingsModal;

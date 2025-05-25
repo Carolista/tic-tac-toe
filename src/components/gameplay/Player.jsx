@@ -1,15 +1,20 @@
-import PlayerBox from './PlayerBox';
 import { useContext } from 'react';
 import DarkModeContext from '../../contexts/DarkModeContext';
 
-const Player = ({ player }) => {
+const Player = ({ player, isPlayerTurn }) => {
 	const darkMode = useContext(DarkModeContext);
 
-	// Displays both players and indicates which player is currently taking their turn
+	let playerClass = isPlayerTurn
+		? darkMode
+			? 'light-mode'
+			: 'dark-mode'
+		: darkMode
+            ? 'dark-mode'
+            : 'light-mode';
+
 	return (
-		<div id="player" className={darkMode ? 'dark-mode' : 'light-mode'}>
-			<PlayerBox player="X" isPlayerTurn={player == 'X'} />
-			<PlayerBox player="O" isPlayerTurn={player == 'O'} />
+		<div className={`player-container ${playerClass}`}>
+			<h2>Player {player}</h2>
 		</div>
 	);
 };

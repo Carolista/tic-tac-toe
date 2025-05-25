@@ -1,34 +1,35 @@
 import { useState, useContext } from 'react';
 import PlayerContext from '../../contexts/PlayerContext';
 
-const Box = ({ box, markCell }) => {
+const Square = ({ square, markCell }) => {
+
+    const player = useContext(PlayerContext);
 
     // Controls animation during hover
 	const [showTranslucentMark, setShowTranslucentMark] = useState(false);
-    const player = useContext(PlayerContext);
-
+    
 	const handleMouseEnter = () => {
-		if (!box.mark) setShowTranslucentMark(true);
+		if (!square.mark) setShowTranslucentMark(true);
 	};
 
-	const handleMouseLeave = event => {
+	const handleMouseLeave = () => {
 		setShowTranslucentMark(false);
 	};
 
 	const handleClick = () => {
 		setShowTranslucentMark(false);
-		markCell(box.id);
+		markCell(square.id);
 	};
 
 	return (
 		<div
-			id={box.id}
-			className="box"
-			style={{ backgroundColor: `#${box.color}` }}
+			id={square.id}
+			className="square"
+			style={{ backgroundColor: `#${square.color}` }}
 			onClick={handleClick}
 			onMouseEnter={handleMouseEnter}
 			onMouseLeave={handleMouseLeave}>
-			{box.mark && <span className={`${box.mark.toLowerCase()}-mark`}>{box.mark}</span>}
+			{square.mark && <span className={`${square.mark.toLowerCase()}-mark`}>{square.mark}</span>}
 			{showTranslucentMark && (
 				<span className={`${player.toLowerCase()}-mark translucent`}>
 					{player}
@@ -38,4 +39,4 @@ const Box = ({ box, markCell }) => {
 	);
 };
 
-export default Box;
+export default Square;

@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { useContext } from 'react';
 import DarkModeContext from '../../contexts/DarkModeContext';
+import Modal from '../shared/Modal';
 
 const GameOverModal = ({ winner, createNewGame, closeModal }) => {
-	const [isDone, setIsDone] = useState(false);
-
 	const darkMode = useContext(DarkModeContext);
+
+	const [isDone, setIsDone] = useState(false);
 
 	const handlePlayAgain = event => {
 		event.preventDefault();
@@ -25,7 +26,7 @@ const GameOverModal = ({ winner, createNewGame, closeModal }) => {
 	};
 
 	return (
-		<div id="game-over-modal">
+		<Modal id="game-over-modal" closeModal={handleClose}>
 			{isDone ? (
 				<div id="thanks" className={darkMode ? 'light-mode' : 'dark-mode'}>
 					<h2>Thanks for playing!</h2>
@@ -46,7 +47,7 @@ const GameOverModal = ({ winner, createNewGame, closeModal }) => {
 					</div>
 				</div>
 			)}
-		</div>
+		</Modal>
 	);
 };
 

@@ -1,4 +1,5 @@
-import Box from './Box';
+import Square from './Square';
+import './gameplay.css';
 
 let rowBasis = [0, 1, 2];
 let cellBasis = [
@@ -7,18 +8,17 @@ let cellBasis = [
 	[6, 7, 8],
 ];
 
-const Grid = ({ boxValues, markCell }) => {
-
-    // Create JSX for grid of 9 boxes
+const Grid = ({ squareValues, markCell }) => {
+	// Create JSX for grid of 9 squares
 	const gridJSX = rowBasis.map(i => {
 		return (
 			<div key={`row-${i}`} className={`row row-${i}`}>
 				{rowBasis.map(j => {
 					let cellNum = cellBasis[i][j];
 					return (
-						<Box
+						<Square
 							key={cellNum}
-							box={boxValues[cellNum]}
+							square={squareValues[cellNum]}
 							markCell={markCell}
 						/>
 					);
