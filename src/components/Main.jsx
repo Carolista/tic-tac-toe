@@ -3,11 +3,13 @@ import { createPortal } from 'react-dom';
 import Grid from './gameplay/Grid';
 import GameOverModal from './gameplay/GameOverModal';
 import { getRandomElement } from '../shared/utils';
-import PlayerContext from '../contexts/PlayerContext.js';
+import CurrentPlayerContext from '../contexts/CurrentPlayerContext.js';
 import Players from './gameplay/Players';
+import CurrentPaletteContext from '../contexts/CurrentPaletteContext.js';
 
-const Main = ({ setCurrentPlayer, palette }) => {
-	const currentPlayer = useContext(PlayerContext);
+const Main = ({ setCurrentPlayer }) => {
+	const currentPlayer = useContext(CurrentPlayerContext);
+	const { currentPalette } = useContext(CurrentPaletteContext);
 
 	const [squareValues, setSquareValues] = useState(getNewSquareValues());
 	const [markCount, setMarkCount] = useState(0);
@@ -22,7 +24,7 @@ const Main = ({ setCurrentPlayer, palette }) => {
 			newSquareValues[i] = {
 				id: i,
 				mark: null,
-				color: getRandomElement(palette),
+				color: getRandomElement(currentPalette),
 			};
 		}
 		return newSquareValues;
@@ -31,7 +33,7 @@ const Main = ({ setCurrentPlayer, palette }) => {
 	function updateColors() {
 		// Create objects for each square in the grid
 		let newSquareValues = squareValues.map((obj, i) => {
-			return { ...squareValues[i], color: getRandomElement(palette) };
+			return { ...squareValues[i], color: getRandomElement(currentPalette) };
 		});
 
 		setSquareValues(newSquareValues);
@@ -39,7 +41,7 @@ const Main = ({ setCurrentPlayer, palette }) => {
 
 	useEffect(() => {
 		updateColors();
-	}, [palette]);
+	}, [currentPalette]);
 
 	const createNewGame = () => {
 		setWinner(null);
@@ -112,7 +114,7 @@ const Main = ({ setCurrentPlayer, palette }) => {
 	return (
 		<main>
 			<Grid squareValues={squareValues} markCell={handlePlayerMark} />
-			<Players currentPlayer={currentPlayer} resetGame={createNewGame} />
+			<Players resetGame={createNewGame} />
 			{showGameOverModal &&
 				createPortal(
 					<GameOverModal

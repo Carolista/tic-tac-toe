@@ -6,8 +6,8 @@ import Main from './components/Main';
 import Footer from './components/Footer';
 import SettingsModal from './components/settings/SettingsModal';
 import DarkModeContext from './contexts/DarkModeContext';
-import PlayerContext from './contexts/PlayerContext.js';
-import PaletteContext from './contexts/PaletteContext';
+import CurrentPlayerContext from './contexts/CurrentPlayerContext.js';
+import CurrentPaletteContext from './contexts/CurrentPaletteContext';
 import { getRandomElement } from './shared/utils';
 import { palettes } from './shared/colors';
 
@@ -24,7 +24,7 @@ function App() {
 		['X', 'O'][Math.floor(Math.random() * 2)]
 	);
 	const [showSettingsModal, setShowSettingsModal] = useState(false);
-	const [palette, setPalette] = useState(getRandomElement(palettes));
+	const [currentPalette, setCurrentPalette] = useState(getRandomElement(palettes));
 	const [darkMode, setDarkMode] = useState(false);
 
 	// Handle topmost level of DOM so that viewport also matches
@@ -43,15 +43,14 @@ function App() {
 
 	return (
 		<div id="window" className={darkMode ? 'dark-mode' : 'light-mode'}>
-			<PaletteContext.Provider value={palette}>
-				<PlayerContext.Provider value={currentPlayer}>
+			<CurrentPaletteContext.Provider value={{ currentPalette, setCurrentPalette }}>
+				<CurrentPlayerContext.Provider value={currentPlayer}>
 					<DarkModeContext.Provider value={darkMode}>
 						<Header />
-						<Main setCurrentPlayer={setCurrentPlayer} palette={palette} />
+						<Main setCurrentPlayer={setCurrentPlayer} />
 						{showSettingsModal &&
 							createPortal(
 								<SettingsModal
-									setPalette={setPalette}
 									setDarkMode={setDarkMode}
 									closeModal={handleCloseModal}
 								/>,
@@ -59,8 +58,8 @@ function App() {
 							)}
 						<Footer openModal={handleOpenModal} />
 					</DarkModeContext.Provider>
-				</PlayerContext.Provider>
-			</PaletteContext.Provider>
+				</CurrentPlayerContext.Provider>
+			</CurrentPaletteContext.Provider>
 		</div>
 	);
 }

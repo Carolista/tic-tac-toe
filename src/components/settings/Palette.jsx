@@ -1,24 +1,26 @@
 import { useState, useContext, useEffect } from 'react';
 import DarkModeContext from '../../contexts/DarkModeContext';
-import PaletteContext from '../../contexts/PaletteContext';
+import CurrentPaletteContext from '../../contexts/CurrentPaletteContext';
 
 const Palette = ({ id, palette, setPalette }) => {
 	const darkMode = useContext(DarkModeContext);
-	const selectedPalette = useContext(PaletteContext);
+	const { currentPalette, setCurrentPalette } = useContext(
+		CurrentPaletteContext
+	);
 
 	const [borderClass, setBorderClass] = useState('');
 
 	const handleChangePalette = () => {
-		setPalette(palette);
+		setCurrentPalette(palette);
 	};
 
 	useEffect(() => {
-		if (selectedPalette == palette) {
+		if (currentPalette == palette) {
 			setBorderClass(darkMode ? 'border-dark' : 'border-light');
 		} else {
 			setBorderClass('');
 		}
-	}, [selectedPalette, darkMode]);
+	}, [currentPalette, darkMode]);
 
 	const paletteJSX = palette.map((color, i) => {
 		return (

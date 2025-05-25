@@ -1,8 +1,8 @@
 import { useState, useContext } from 'react';
-import PlayerContext from '../../contexts/PlayerContext.js';
+import CurrentPlayerContext from '../../contexts/CurrentPlayerContext.js';
 
 const Square = ({ square, markCell }) => {
-	const currentPlayer = useContext(PlayerContext);
+	const currentPlayer = useContext(CurrentPlayerContext);
 
 	// Controls animation during hover
 	const [showTranslucentMark, setShowTranslucentMark] = useState(false);

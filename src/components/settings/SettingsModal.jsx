@@ -4,7 +4,7 @@ import Palettes from './Palettes';
 import './settings.css';
 import Modal from '../Modal';
 
-const SettingsModal = ({ setPalette, setDarkMode, closeModal }) => {
+const SettingsModal = ({ setDarkMode, closeModal }) => {
 	const darkMode = useContext(DarkModeContext);
 
 	const [shouldScale, setShouldScale] = useState(false);
@@ -36,7 +36,7 @@ const SettingsModal = ({ setPalette, setDarkMode, closeModal }) => {
 						{darkMode ? 'ON' : 'OFF'}
 					</span>
 				</div>
-				<Palettes setPalette={setPalette} />
+				<Palettes />
 			</div>
 		</Modal>
 	);
