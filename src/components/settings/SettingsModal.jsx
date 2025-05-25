@@ -29,7 +29,7 @@ const SettingsModal = ({ setPalette, setDarkMode, closeModal }) => {
 					DARK MODE: &nbsp;
 					<span
 						id="on-off"
-						class={shouldScale && 'scale-up'}
+						className={`${shouldScale && 'scale-up'}`}
 						onClick={toggleDarkMode}
 						onMouseEnter={handleMouseEnter}
 						onMouseLeave={handleMouseLeave}>

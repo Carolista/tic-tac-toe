@@ -7,7 +7,7 @@ const Modal = ({ id, closeModal, align, children }) => {
 	return (
 		<div id={id} className="modal">
 			<div
-				id="modal-contents"
+				id="modal-content"
 				className={`${darkMode ? 'light-mode' : 'dark-mode'} align-${align}`}>
 				<div className="modal-button" onClick={closeModal}>
 					<i className="fa-solid fa-xmark" />

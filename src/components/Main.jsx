@@ -5,11 +5,9 @@ import GameOverModal from './gameplay/GameOverModal';
 import { getRandomElement } from '../shared/utils';
 import PlayerContext from '../contexts/PlayerContext.js';
 import Players from './gameplay/Players';
-import PaletteContext from '../contexts/PaletteContext';
 
-const Main = ({ setCurrentPlayer }) => {
+const Main = ({ setCurrentPlayer, palette }) => {
 	const currentPlayer = useContext(PlayerContext);
-	const palette = useContext(PaletteContext);
 
 	const [squareValues, setSquareValues] = useState(getNewSquareValues());
 	const [markCount, setMarkCount] = useState(0);
