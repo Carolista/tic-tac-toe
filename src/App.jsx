@@ -12,9 +12,9 @@ import { getRandomElement } from './shared/utils';
 import { palettes } from './shared/colors';
 
 // FIXME: Eliminate context where possible and modify remaining to include setter
-// FIXME: simplify yes/no for replay and make sure if no, game cannot still be played
-// FIXME: create Button component and use everywhere
+// TODO: if not using Button, delete component
 
+// POSSIBLE FUTURE UPDATES
 // TODO: add localStorage for saving settings for next time
 // TODO: provide stats on past games using localStorage
 // TODO: make some palettes unavailable and

@@ -11,6 +11,7 @@ const SettingsModal = ({ setPalette, setDarkMode, closeModal }) => {
 		setDarkMode(!darkMode);
 	};
 
+    // TODO: Get content centered and styled properly
 	return (
 		<Modal id="settings-modal" closeModal={closeModal}>
 			<Palettes setPalette={setPalette} />
