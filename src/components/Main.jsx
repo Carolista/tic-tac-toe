@@ -7,7 +7,12 @@ import CurrentPlayerContext from '../contexts/CurrentPlayerContext.js';
 import Players from './gameplay/Players';
 import CurrentPaletteContext from '../contexts/CurrentPaletteContext.js';
 
-const Main = () => {
+const Main = ({ gamesPlayedPair, gamesWonByXPair, gamesWonByOPair }) => {
+
+    const { gamesPlayed, setGamesPlayed } = gamesPlayedPair;
+    const { gamesWonByX, setGamesWonByX } = gamesWonByXPair;
+    const { gamesWonByO, setGamesWonByO } = gamesWonByOPair;
+
 	const { currentPlayer, setCurrentPlayer } = useContext(CurrentPlayerContext);
 	const { currentPalette } = useContext(CurrentPaletteContext);
 
@@ -15,6 +20,24 @@ const Main = () => {
 	const [markCount, setMarkCount] = useState(0);
 	const [winner, setWinner] = useState(null);
 	const [showGameOverModal, setShowGameOverModal] = useState(false);
+
+    useEffect(() => {
+        updateColors();
+        // eslint-disable-next-line
+    }, [currentPalette]);
+
+        useEffect(() => {
+        if (currentPlayer && !winner) checkForWinner();
+        // eslint-disable-next-line
+    }, [squareValues]);
+
+    useEffect(() => {
+        if (winner) {
+            setGamesPlayed(gamesPlayed + 1)
+            winner == 'X' ? setGamesWonByX(gamesWonByX + 1) : setGamesWonByO(gamesWonByO + 1);
+            setShowGameOverModal(true);
+        }
+    }, [winner]);
 
 	function getNewSquareValues() {
 		let newSquareValues = [];
@@ -39,12 +62,7 @@ const Main = () => {
 		setSquareValues(newSquareValues);
 	}
 
-	useEffect(() => {
-        updateColors();
-        // eslint-disable-next-line
-	}, [currentPalette]);
-
-	const createNewGame = () => {
+	function createNewGame () {
 		setWinner(null);
 		setSquareValues(getNewSquareValues());
 		setMarkCount(0);
@@ -57,11 +75,12 @@ const Main = () => {
 	};
 
 	const handleNoWinner = () => {
+        setGamesPlayed(gamesPlayed + 1)
 		setShowGameOverModal(true);
 		setCurrentPlayer(null);
 	};
 
-	const checkForWinner = () => {
+	function checkForWinner() {
 		let haveWinner = false;
 		let winOptions = ['XXX', 'OOO'];
 		let b = squareValues;
@@ -90,16 +109,7 @@ const Main = () => {
 		}
 	};
 
-	useEffect(() => {
-        if (currentPlayer && !winner) checkForWinner();
-        // eslint-disable-next-line
-	}, [squareValues]);
 
-	useEffect(() => {
-		if (winner) {
-			setShowGameOverModal(true);
-		}
-	}, [winner]);
 
 	const handlePlayerMark = id => {
 		if (!winner && !squareValues[id].mark) {

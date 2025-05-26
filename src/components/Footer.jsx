@@ -1,8 +1,9 @@
-const Footer = ({ openModal }) => {
+const Footer = ({ openSettingsModal, openStatsModal }) => {
 	return (
 		<footer>
-			<div id="settings-gear" className="wobble">
-				<i className="fa-solid fa-gear fa-lg" onClick={openModal} />
+			<div id="settings-icons">
+				<i className="wobble fa-solid fa-gear fa-lg" onClick={openSettingsModal} />
+				<i className="wobble fa-solid fa-chart-simple fa-lg" onClick={openStatsModal} />
 			</div>
 		</footer>
 	);

@@ -31,8 +31,8 @@ footer {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
-    align-items: center;
-    height: 6vw;
+	align-items: center;
+	height: 6vw;
 }
 
 div {
@@ -93,7 +93,8 @@ h2,
 	z-index: 11;
 }
 
-#settings-gear {
+#settings-icons {
+	gap: 2vw;
 	cursor: pointer;
 }
 
@@ -126,6 +127,33 @@ h2,
 	border: 0.7vw solid white;
 }
 
+#stats-content {
+	flex-direction: column;
+}
+
+#stats-table {
+	font-family: 'Outfit', sans-serif;
+	font-weight: 400;
+	padding-top: 6px;
+	border: none;
+	outline: none;
+}
+
+tr:hover td {
+	color: #86b85a;
+}
+
+td {
+	padding: 5px 20px 5px 0;
+}
+td:first-child {
+	text-align: end;
+}
+td:last-child {
+	font-weight: 200;
+	padding: 5px 0;
+}
+
 @media screen and (min-width: 925px) {
 	header {
 		height: 185px;
@@ -137,9 +165,9 @@ h2,
 	#dark-mode-toggle {
 		font-size: 55px;
 	}
-    footer {
-        height: 55px;
-    }
+	footer {
+		height: 55px;
+	}
 	.button-group {
 		gap: 28px;
 	}
@@ -162,9 +190,9 @@ h2,
 	#dark-mode-toggle {
 		font-size: 27px;
 	}
-    footer {
-        height: 27px;
-    }
+	footer {
+		height: 27px;
+	}
 	.button-group {
 		gap: 13px;
 	}

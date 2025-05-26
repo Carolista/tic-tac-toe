@@ -14,10 +14,10 @@ const Player = ({ currentPlayer, isPlayerTurn }) => {
 		? 'dark-mode'
 		: 'light-mode';
 
-    // Had to handle this with JS because .scale-up was 
+    // Had to handle this with JS because .scale-up:hover was 
     // causing side effects when browser page was resizing
 	const handleMouseEnter = () => {
-		if (isPlayerTurn) setShouldScale(true);
+		if (currentPlayer && isPlayerTurn) setShouldScale(true);
         else setShouldScale(false);
 	};
 	const handleMouseLeave = () => {
@@ -26,7 +26,7 @@ const Player = ({ currentPlayer, isPlayerTurn }) => {
 
 	return (
 		<div
-			className={`player-container ${playerClass} ${shouldScale && 'scale-up'}`}
+			className={`player-container ${playerClass} ${shouldScale && "scale-up"}`}
 			onMouseEnter={handleMouseEnter}
 			onMouseLeave={handleMouseLeave}>
 			<h2>Player {currentPlayer}</h2>
