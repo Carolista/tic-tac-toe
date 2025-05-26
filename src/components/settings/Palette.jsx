@@ -20,7 +20,6 @@ const Palette = ({ id, palette }) => {
 		} else {
             setBorderClass('');
 		}
-        // eslint-disable-next-line
 	}, [currentPalette, darkMode]);
 
 	const paletteJSX = palette.map((color, i) => {

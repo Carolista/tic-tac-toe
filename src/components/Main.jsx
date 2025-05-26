@@ -23,12 +23,10 @@ const Main = ({ gamesPlayedPair, gamesWonByXPair, gamesWonByOPair }) => {
 
     useEffect(() => {
         updateColors();
-        // eslint-disable-next-line
     }, [currentPalette]);
 
         useEffect(() => {
         if (currentPlayer && !winner) checkForWinner();
-        // eslint-disable-next-line
     }, [squareValues]);
 
     useEffect(() => {

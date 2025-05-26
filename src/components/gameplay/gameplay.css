@@ -74,6 +74,7 @@
 #reset-game {
 	justify-content: center;
 	width: 60vw;
+    cursor: pointer;
 }
 
 @media screen and (min-width: 925px) {
