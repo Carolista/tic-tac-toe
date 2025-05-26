@@ -13,7 +13,6 @@ import { palettes } from './shared/colors';
 import StatsModal from './components/StatsModal.jsx';
 
 // POSSIBLE FUTURE UPDATES
-// TODO: provide stats on past games using localStorage
 // TODO: make some palettes unavailable and
 // unlock them at intervals as user plays more games
 
