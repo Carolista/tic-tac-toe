@@ -1,10 +1,10 @@
 import { useEffect, useState, useContext } from 'react';
 import { createPortal } from 'react-dom';
-import Grid from './gameplay/Grid';
-import GameOverModal from './gameplay/GameOverModal';
+import Grid from './gameplay/Grid.jsx';
+import GameOverModal from './gameplay/GameOverModal.jsx';
 import { getRandomElement } from '../shared/utils';
 import CurrentPlayerContext from '../contexts/CurrentPlayerContext.js';
-import Players from './gameplay/Players';
+import Players from './gameplay/Players.jsx';
 import CurrentPaletteContext from '../contexts/CurrentPaletteContext.js';
 
 const Main = ({ gamesPlayedPair, gamesWonByXPair, gamesWonByOPair }) => {
