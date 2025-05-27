@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import DarkModeContext from '../contexts/DarkModeContext';
+import DarkModeContext from '../../contexts/DarkModeContext';
 
 const Modal = ({ id, closeModal, align, children }) => {
 	const { darkMode } = useContext(DarkModeContext);

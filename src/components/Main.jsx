@@ -2,17 +2,13 @@ import { useEffect, useState, useContext } from 'react';
 import { createPortal } from 'react-dom';
 import Grid from './gameplay/Grid.jsx';
 import GameOverModal from './gameplay/GameOverModal.jsx';
-import { getRandomElement } from '../shared/utils';
+import { getRandomElement } from '../common/utils.js';
 import CurrentPlayerContext from '../contexts/CurrentPlayerContext.js';
 import Players from './gameplay/Players.jsx';
 import CurrentPaletteContext from '../contexts/CurrentPaletteContext.js';
 
-const Main = ({ gamesPlayedPair, gamesWonByXPair, gamesWonByOPair }) => {
-
-    const { gamesPlayed, setGamesPlayed } = gamesPlayedPair;
-    const { gamesWonByX, setGamesWonByX } = gamesWonByXPair;
-    const { gamesWonByO, setGamesWonByO } = gamesWonByOPair;
-
+const Main = ({ statsPair }) => {
+	const { stats, setStats } = statsPair;
 	const { currentPlayer, setCurrentPlayer } = useContext(CurrentPlayerContext);
 	const { currentPalette } = useContext(CurrentPaletteContext);
 
@@ -21,21 +17,25 @@ const Main = ({ gamesPlayedPair, gamesWonByXPair, gamesWonByOPair }) => {
 	const [winner, setWinner] = useState(null);
 	const [showGameOverModal, setShowGameOverModal] = useState(false);
 
-    useEffect(() => {
-        updateColors();
-    }, [currentPalette]);
+	useEffect(() => {
+		updateColors();
+	}, [currentPalette]);
 
-        useEffect(() => {
-        if (currentPlayer && !winner) checkForWinner();
-    }, [squareValues]);
+	useEffect(() => {
+		if (currentPlayer && !winner) checkForWinner();
+	}, [squareValues]);
 
-    useEffect(() => {
-        if (winner) {
-            setGamesPlayed(gamesPlayed + 1)
-            winner == 'X' ? setGamesWonByX(gamesWonByX + 1) : setGamesWonByO(gamesWonByO + 1);
-            setShowGameOverModal(true);
-        }
-    }, [winner]);
+	useEffect(() => {
+		if (winner) {
+			let updatedStats = {
+				gamesPlayed: stats.gamesPlayed + 1,
+				gamesWonByX: stats.gamesWonByX + (winner === 'X' ? 1 : 0),
+				gamesWonByO: stats.gamesWonByO + (winner === 'O' ? 1 : 0),
+			};
+			setStats(updatedStats);
+			setShowGameOverModal(true);
+		}
+	}, [winner]);
 
 	function getNewSquareValues() {
 		let newSquareValues = [];
@@ -60,12 +60,12 @@ const Main = ({ gamesPlayedPair, gamesWonByXPair, gamesWonByOPair }) => {
 		setSquareValues(newSquareValues);
 	}
 
-	function createNewGame () {
+	function createNewGame() {
 		setWinner(null);
 		setSquareValues(getNewSquareValues());
 		setMarkCount(0);
 		setCurrentPlayer(getRandomElement(['X', 'O']));
-	};
+	}
 
 	const closeModal = () => {
 		setShowGameOverModal(false);
@@ -73,7 +73,11 @@ const Main = ({ gamesPlayedPair, gamesWonByXPair, gamesWonByOPair }) => {
 	};
 
 	const handleNoWinner = () => {
-        setGamesPlayed(gamesPlayed + 1)
+		let updatedStats = {
+			...stats,
+			gamesPlayed: stats.gamesPlayed + 1,
+		};
+		setStats(updatedStats);
 		setShowGameOverModal(true);
 		setCurrentPlayer(null);
 	};
@@ -105,9 +109,7 @@ const Main = ({ gamesPlayedPair, gamesWonByXPair, gamesWonByOPair }) => {
 			if (markCount === 9) handleNoWinner();
 			else setCurrentPlayer(currentPlayer === 'X' ? 'O' : 'X');
 		}
-	};
-
-
+	}
 
 	const handlePlayerMark = id => {
 		if (!winner && !squareValues[id].mark) {

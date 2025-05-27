@@ -1,0 +1,16 @@
+#about-content {
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-family: 'Outfit', sans-serif;
+	font-weight: 300;
+	text-align: justify;
+	width: 100vw;
+	padding: 20vw;
+	box-sizing: border-box;
+}
+
+#about-content > p {
+	width: 100%;
+	text-align: justify;
+}

@@ -2,7 +2,7 @@ import { useState, useContext } from 'react';
 import DarkModeContext from '../../contexts/DarkModeContext';
 import Palettes from './Palettes';
 import './settings.css';
-import Modal from '../Modal';
+import Modal from '../shared/Modal';
 
 const SettingsModal = ({ closeModal }) => {
 	const { darkMode, setDarkMode } = useContext(DarkModeContext);
