@@ -1,6 +1,6 @@
 import './App.css';
 import Home from './components/Home.jsx';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router';
+import { HashRouter, Routes, Route, Navigate } from 'react-router';
 import { useEffect, useState } from 'react';
 import DarkModeContext from './contexts/DarkModeContext.js';
 import CurrentPlayerContext from './contexts/CurrentPlayerContext.js';
@@ -41,13 +41,13 @@ function App() {
 				<CurrentPlayerContext.Provider
 					value={{ currentPlayer, setCurrentPlayer }}>
 					<DarkModeContext.Provider value={{ darkMode, setDarkMode }}>
-						<BrowserRouter>
+						<HashRouter>
 							<Routes>
 								<Route path="/" element={<Navigate to="/play" replace />} />
 								<Route path="/play" element={<Home />} />
 								<Route path="/about" element={<About />} />
 							</Routes>
-						</BrowserRouter>
+						</HashRouter>
 					</DarkModeContext.Provider>
 				</CurrentPlayerContext.Provider>
 			</CurrentPaletteContext.Provider>
