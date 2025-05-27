@@ -1,0 +1,16 @@
+#page-not-found-content {
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	font-family: 'Outfit', sans-serif;
+	font-weight: 300;
+	width: 100vw;
+	padding: 20vw;
+	box-sizing: border-box;
+}
+
+p {
+    line-height: 1;
+    margin: 10px 0;
+}

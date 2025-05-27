@@ -8,8 +8,9 @@ import CurrentPaletteContext from './contexts/CurrentPaletteContext';
 import { getRandomElement } from './common/utils.js';
 import { palettes } from './common/colors.js';
 import About from './components/about/About.jsx';
+import PageNotFound from './components/page-not-found/PageNotFound.jsx';
 
-// POSSIBLE FUTURE UPDATES
+// POSSIBLE FUTURE     
 // TODO: Make some palettes unavailable and unlock them at intervals as user plays more games
 // TODO: Add rotating images in About component to demonstrate win patterns
 
@@ -46,6 +47,7 @@ function App() {
 								<Route path="/" element={<Navigate to="/play" replace />} />
 								<Route path="/play" element={<Home />} />
 								<Route path="/about" element={<About />} />
+								<Route path="/*" element={<PageNotFound />} />
 							</Routes>
 						</HashRouter>
 					</DarkModeContext.Provider>
