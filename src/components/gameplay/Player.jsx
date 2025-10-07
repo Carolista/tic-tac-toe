@@ -1,8 +1,8 @@
-import { useContext, useState } from 'react';
-import DarkModeContext from '../../context/DarkModeContext';
+import { use, useState } from 'react';
+import { SettingsContext } from '../../context/SettingsContext.jsx';
 
-const Player = ({ currentPlayer, isPlayerTurn }) => {
-	const { darkMode } = useContext(DarkModeContext);
+const Player = ({ playerId, isPlayerTurn }) => {
+	const { darkMode } = use(SettingsContext);
 
 	const [shouldScale, setShouldScale] = useState(false);
 
@@ -17,7 +17,7 @@ const Player = ({ currentPlayer, isPlayerTurn }) => {
 	// Had to handle this with JS because .scale-up:hover was
 	// causing side effects when browser page was resizing
 	const handleMouseEnter = () => {
-		if (currentPlayer && isPlayerTurn) setShouldScale(true);
+		if (playerId && isPlayerTurn) setShouldScale(true);
 		else setShouldScale(false);
 	};
 	const handleMouseLeave = () => {
@@ -27,11 +27,11 @@ const Player = ({ currentPlayer, isPlayerTurn }) => {
 	return (
 		<div
 			className={`player-container ${playerClass} ${
-				isPlayerTurn && shouldScale && 'scale-up'
+				shouldScale && 'scale-up'
 			}`}
 			onMouseEnter={handleMouseEnter}
 			onMouseLeave={handleMouseLeave}>
-			<h2>Player {currentPlayer}</h2>
+			<h2>Player {playerId}</h2>
 		</div>
 	);
 };

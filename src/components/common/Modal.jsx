@@ -1,8 +1,8 @@
-import { useContext } from 'react';
-import DarkModeContext from '../../context/DarkModeContext';
+import { use } from 'react';
+import { SettingsContext } from '../../context/SettingsContext.jsx';
 
 const Modal = ({ id, closeModal, align, children }) => {
-	const { darkMode } = useContext(DarkModeContext);
+	const { darkMode } = use(SettingsContext);
 
 	return (
 		<div id={id} className="modal">

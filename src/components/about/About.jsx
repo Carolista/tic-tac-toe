@@ -1,6 +1,6 @@
 import { Link } from 'react-router';
-import './about.css';
 import Spacer from '../common/Spacer';
+import './about.css';
 
 const About = () => {
 	return (

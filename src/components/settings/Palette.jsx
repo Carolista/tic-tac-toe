@@ -1,12 +1,8 @@
-import { useState, useContext, useEffect } from 'react';
-import DarkModeContext from '../../context/DarkModeContext';
-import CurrentPaletteContext from '../../context/CurrentPaletteContext';
+import { useState, useEffect, use } from 'react';
+import { SettingsContext } from '../../context/SettingsContext.jsx';
 
 const Palette = ({ id, palette, closeModal }) => {
-	const { darkMode } = useContext(DarkModeContext);
-	const { currentPalette, setCurrentPalette } = useContext(
-		CurrentPaletteContext
-	);
+	const { darkMode, currentPalette, setCurrentPalette } = use(SettingsContext);
 
 	const [borderClass, setBorderClass] = useState('');
 
