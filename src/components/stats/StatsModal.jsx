@@ -1,4 +1,4 @@
-import Modal from '../shared/Modal';
+import Modal from '../common/Modal';
 import './stats.css';
 
 const StatsModal = ({ closeModal }) => {

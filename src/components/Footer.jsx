@@ -1,10 +1,9 @@
-import { useContext } from 'react';
+import { use } from 'react';
 import { Link } from 'react-router';
-import DarkModeContext from '../contexts/DarkModeContext';
+import { SettingsContext } from '../context/SettingsContext.jsx';
 
 const Footer = ({ openSettingsModal, openStatsModal }) => {
-
-    const { darkMode } = useContext(DarkModeContext);
+	const { darkMode } = use(SettingsContext);
 
 	return (
 		<footer>

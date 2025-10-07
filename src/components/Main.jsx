@@ -1,16 +1,16 @@
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useState, use } from 'react';
 import { createPortal } from 'react-dom';
+import { getRandomElement } from '../shared/utils.js';
+import { CurrentPlayerContext } from '../context/CurrentPlayerContext.jsx';
+import { SettingsContext } from '../context/SettingsContext.jsx';
 import Grid from './gameplay/Grid.jsx';
 import GameOverModal from './gameplay/GameOverModal.jsx';
-import { getRandomElement } from '../common/utils.js';
-import CurrentPlayerContext from '../contexts/CurrentPlayerContext.js';
 import Players from './gameplay/Players.jsx';
-import CurrentPaletteContext from '../contexts/CurrentPaletteContext.js';
 
 const Main = ({ statsPair }) => {
 	const { stats, setStats } = statsPair;
-	const { currentPlayer, setCurrentPlayer } = useContext(CurrentPlayerContext);
-	const { currentPalette } = useContext(CurrentPaletteContext);
+	const { currentPlayer, setCurrentPlayer } = use(CurrentPlayerContext);
+	const { currentPalette } = use(SettingsContext);
 
 	const [squareValues, setSquareValues] = useState(getNewSquareValues());
 	const [markCount, setMarkCount] = useState(0);

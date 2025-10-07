@@ -1,16 +1,14 @@
-import { useContext, useEffect, useState } from 'react';
+import { use, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
-import DarkModeContext from '../contexts/DarkModeContext';
-import CurrentPaletteContext from '../contexts/CurrentPaletteContext';
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
 import SettingsModal from './settings/SettingsModal';
 import StatsModal from './stats/StatsModal.jsx';
+import { SettingsContext } from '../context/SettingsContext.jsx';
 
 function Home() {
-	const { currentPalette } = useContext(CurrentPaletteContext);
-	const { darkMode } = useContext(DarkModeContext);
+	const { currentPalette, darkMode } = use(SettingsContext);
 
 	let initialStats = JSON.parse(localStorage.getItem('stats')) || {
 		gamesPlayed: 0,

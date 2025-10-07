@@ -1,17 +1,17 @@
-import { useContext } from 'react';
+import { use } from 'react';
 import Player from './Player';
 import './gameplay.css';
-import CurrentPlayerContext from '../../contexts/CurrentPlayerContext';
+import { CurrentPlayerContext } from '../../context/CurrentPlayerContext';
 
 const Players = ({ resetGame }) => {
-	const { currentPlayer } = useContext(CurrentPlayerContext);
+	const { currentPlayer } = use(CurrentPlayerContext);
 
 	return (
 		<div id="players">
 			{currentPlayer ? (
 				<>
-					<Player currentPlayer="X" isPlayerTurn={currentPlayer == 'X'} />
-					<Player currentPlayer="O" isPlayerTurn={currentPlayer == 'O'} />
+					<Player playerId="X" isPlayerTurn={currentPlayer == 'X'} />
+					<Player playerId="O" isPlayerTurn={currentPlayer == 'O'} />
 				</>
 			) : (
 				<div id="reset-game">
