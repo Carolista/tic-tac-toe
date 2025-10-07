@@ -1,6 +1,6 @@
 import { Link } from 'react-router';
 import './about.css';
-import Spacer from '../shared/Spacer';
+import Spacer from '../common/Spacer';
 
 const About = () => {
 	return (
@@ -22,9 +22,8 @@ const About = () => {
 							<i className="fa-solid fa-gear fa-xxl"></i>
 						</td>
 						<td>
-							Customize the look of your game! Choose from a
-							variety of color themes and also toggle between dark mode and
-							light mode.
+							Customize the look of your game! Choose from a variety of color
+							themes and also toggle between dark mode and light mode.
 						</td>
 					</tr>
 					<tr>

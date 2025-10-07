@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react';
-import CurrentPlayerContext from '../../contexts/CurrentPlayerContext.js';
+import CurrentPlayerContext from '../../context/CurrentPlayerContext.js';
 
 const Square = ({ square, markCell }) => {
 	const { currentPlayer } = useContext(CurrentPlayerContext);

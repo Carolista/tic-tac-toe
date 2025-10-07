@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import DarkModeContext from '../../contexts/DarkModeContext';
+import DarkModeContext from '../../context/DarkModeContext';
 
 const Player = ({ currentPlayer, isPlayerTurn }) => {
 	const { darkMode } = useContext(DarkModeContext);

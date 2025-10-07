@@ -1,9 +1,9 @@
-import { palettes } from '../../common/colors';
+import { palettes } from '../../shared/colors';
 import Palette from './Palette';
 
-const Palettes = () => {
+const Palettes = ({ closeModal }) => {
 	const palettesJSX = palettes.map((palette, i) => {
-		return <Palette key={i} id={i} palette={palette} />;
+		return <Palette key={i} id={i} palette={palette} closeModal={closeModal} />;
 	});
 
 	return <div id="palettes">{palettesJSX}</div>;

@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
-import DarkModeContext from '../contexts/DarkModeContext';
-import CurrentPaletteContext from '../contexts/CurrentPaletteContext';
+import DarkModeContext from '../context/DarkModeContext.js';
+import CurrentPaletteContext from '../context/CurrentPaletteContext.js';
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';

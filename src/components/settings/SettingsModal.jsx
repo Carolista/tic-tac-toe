@@ -1,8 +1,8 @@
 import { useState, useContext } from 'react';
-import DarkModeContext from '../../contexts/DarkModeContext';
+import DarkModeContext from '../../context/DarkModeContext';
 import Palettes from './Palettes';
 import './settings.css';
-import Modal from '../shared/Modal';
+import Modal from '../common/Modal';
 
 const SettingsModal = ({ closeModal }) => {
 	const { darkMode, setDarkMode } = useContext(DarkModeContext);
@@ -36,7 +36,7 @@ const SettingsModal = ({ closeModal }) => {
 						{darkMode ? 'ON' : 'OFF'}
 					</span>
 				</div>
-				<Palettes />
+				<Palettes closeModal={closeModal} />
 			</div>
 		</Modal>
 	);

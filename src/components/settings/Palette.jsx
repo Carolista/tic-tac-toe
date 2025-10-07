@@ -1,8 +1,8 @@
 import { useState, useContext, useEffect } from 'react';
-import DarkModeContext from '../../contexts/DarkModeContext';
-import CurrentPaletteContext from '../../contexts/CurrentPaletteContext';
+import DarkModeContext from '../../context/DarkModeContext';
+import CurrentPaletteContext from '../../context/CurrentPaletteContext';
 
-const Palette = ({ id, palette }) => {
+const Palette = ({ id, palette, closeModal }) => {
 	const { darkMode } = useContext(DarkModeContext);
 	const { currentPalette, setCurrentPalette } = useContext(
 		CurrentPaletteContext
@@ -15,10 +15,10 @@ const Palette = ({ id, palette }) => {
 	};
 
 	useEffect(() => {
-        if (currentPalette == palette) {
-            setBorderClass(darkMode ? 'border-dark' : 'border-light');
+		if (currentPalette == palette) {
+			setBorderClass(darkMode ? 'border-dark' : 'border-light');
 		} else {
-            setBorderClass('');
+			setBorderClass('');
 		}
 	}, [currentPalette, darkMode]);
 
@@ -35,7 +35,8 @@ const Palette = ({ id, palette }) => {
 		<div
 			id={`palette-${id}`}
 			className={`palette ${borderClass}`}
-			onClick={handleChangePalette}>
+			onClick={handleChangePalette}
+			onDoubleClick={closeModal}>
 			{paletteJSX}
 		</div>
 	);

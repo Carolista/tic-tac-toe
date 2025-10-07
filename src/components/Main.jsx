@@ -2,10 +2,10 @@ import { useEffect, useState, useContext } from 'react';
 import { createPortal } from 'react-dom';
 import Grid from './gameplay/Grid.jsx';
 import GameOverModal from './gameplay/GameOverModal.jsx';
-import { getRandomElement } from '../common/utils.js';
-import CurrentPlayerContext from '../contexts/CurrentPlayerContext.js';
+import { getRandomElement } from '../shared/utils.js';
+import CurrentPlayerContext from '../context/CurrentPlayerContext.js';
 import Players from './gameplay/Players.jsx';
-import CurrentPaletteContext from '../contexts/CurrentPaletteContext.js';
+import CurrentPaletteContext from '../context/CurrentPaletteContext.js';
 
 const Main = ({ statsPair }) => {
 	const { stats, setStats } = statsPair;

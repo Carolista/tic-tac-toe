@@ -2,15 +2,15 @@ import './App.css';
 import Home from './components/Home.jsx';
 import { HashRouter, Routes, Route, Navigate } from 'react-router';
 import { useEffect, useState } from 'react';
-import DarkModeContext from './contexts/DarkModeContext.js';
-import CurrentPlayerContext from './contexts/CurrentPlayerContext.js';
-import CurrentPaletteContext from './contexts/CurrentPaletteContext';
-import { getRandomElement } from './common/utils.js';
-import { palettes } from './common/colors.js';
+import DarkModeContext from './context/DarkModeContext.js';
+import CurrentPlayerContext from './context/CurrentPlayerContext.js';
+import CurrentPaletteContext from './context/CurrentPaletteContext.js';
+import { getRandomElement } from './shared/utils.js';
+import { palettes } from './shared/colors.js';
 import About from './components/about/About.jsx';
 import PageNotFound from './components/page-not-found/PageNotFound.jsx';
 
-// POSSIBLE FUTURE     
+// POSSIBLE FUTURE UPDATES
 // TODO: Make some palettes unavailable and unlock them at intervals as user plays more games
 // TODO: Add rotating images in About component to demonstrate win patterns
 
