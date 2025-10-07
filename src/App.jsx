@@ -5,10 +5,6 @@ import About from './components/about/About.jsx';
 import PageNotFound from './components/page-not-found/PageNotFound.jsx';
 import { SettingsContext } from './context/SettingsContext.jsx';
 
-// POSSIBLE FUTURE UPDATES
-// TODO: Make some palettes unavailable and unlock them at intervals as user plays more games
-// TODO: Add rotating images in About component to demonstrate win patterns
-
 function App() {
 	const { darkMode } = use(SettingsContext);
 
