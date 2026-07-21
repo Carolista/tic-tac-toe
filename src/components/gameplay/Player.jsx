@@ -6,13 +6,7 @@ const Player = ({ playerId, isPlayerTurn }) => {
 
 	const [shouldScale, setShouldScale] = useState(false);
 
-	let playerClass = isPlayerTurn
-		? darkMode
-			? 'light-mode'
-			: 'dark-mode'
-		: darkMode
-		? 'dark-mode'
-		: 'light-mode';
+	let playerClass = darkMode === isPlayerTurn ? 'light-mode' : 'dark-mode';
 
 	// Had to handle this with JS because .scale-up:hover was
 	// causing side effects when browser page was resizing
@@ -26,9 +20,7 @@ const Player = ({ playerId, isPlayerTurn }) => {
 
 	return (
 		<div
-			className={`player-container ${playerClass} ${
-				shouldScale && 'scale-up'
-			}`}
+			className={`player-container ${playerClass} ${shouldScale && 'scale-up'}`}
 			onMouseEnter={handleMouseEnter}
 			onMouseLeave={handleMouseLeave}>
 			<h2>Player {playerId}</h2>
