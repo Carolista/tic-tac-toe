@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from 'react';
 import { getRandomElement } from '@shared/utils';
+import { palettes } from '@shared/colors';
 
 export const SettingsContext = createContext();
 
@@ -13,12 +14,9 @@ export const SettingsContextProvider = ({ children }) => {
 
 	// Handle topmost level of DOM so that viewport also matches
 	useEffect(() => {
-		document
-			.querySelector('html')
-			.classList.add(darkMode ? 'dark-mode' : 'light-mode');
-		document
-			.querySelector('html')
-			.classList.remove(darkMode ? 'light-mode' : 'dark-mode');
+		const html = document.querySelector('html');
+        html.classList.remove(...html.classList);
+		html.classList.add(darkMode ? 'dark-mode' : 'light-mode');
 	}, [darkMode]);
 
 	return (
