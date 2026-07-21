@@ -1,5 +1,6 @@
 import { use } from 'react';
 import { SettingsContext } from '@context/SettingsContext.jsx';
+import './common.css';
 
 const Modal = ({ id, closeModal, align, children }) => {
 	const { darkMode } = use(SettingsContext);

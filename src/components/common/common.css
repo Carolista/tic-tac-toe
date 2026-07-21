@@ -1,0 +1,25 @@
+.modal {
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	top: 0;
+	left: 0;
+	color: white;
+	min-height: 100vh;
+	height: fit-content;
+	width: 100vw;
+	z-index: 10;
+}
+
+#modal-content {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	padding: 3vw;
+}
+
+.modal-button {
+	background-color: transparent;
+	cursor: pointer;
+	z-index: 11;
+}
