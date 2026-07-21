@@ -1,21 +1,21 @@
-#settings-content {
+.settings__content {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
 
-#palettes {
+.settings__palettes {
 	flex-direction: column;
-	width: 60vw;
+	width: clamp(270px, 60vw, 555px);
 	margin: 30px auto;
-	gap: 1.5vw;
+	gap: clamp(8px, 1.5vw, 14px);
 }
 
 .palette {
 	box-sizing: border-box;
 	flex-direction: row;
 	width: 100%;
-	height: 6vw;
+	height: clamp(27px, 6vw, 56px);
 	cursor: pointer;
 }
 
@@ -23,32 +23,6 @@
 	flex-grow: 1;
 }
 
-#settings {
-	flex-direction: column;
-}
-
-#on-off {
+.settings__switch {
 	cursor: pointer;
-}
-
-@media screen and (min-width: 925px) {
-	#palettes {
-		width: 555px;
-		gap: 14px;
-	}
-	.palette {
-		height: 56px;
-		width: 555px;
-	}
-}
-
-@media screen and (max-width: 450px) {
-	#palettes {
-		width: 270px;
-		gap: 8px;
-	}
-	.palette {
-		height: 27px;
-		width: 270px;
-	}
 }

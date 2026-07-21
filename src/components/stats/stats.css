@@ -1,8 +1,8 @@
-#stats-content {
+.stats__content {
 	flex-direction: column;
 }
 
-#stats-table {
+.stats__table {
 	font-family: 'Outfit', sans-serif;
 	font-weight: 400;
 	padding-top: 6px;

@@ -1,4 +1,4 @@
-#page-not-found-content {
+.page-not-found__content {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
@@ -6,11 +6,11 @@
 	font-family: 'Outfit', sans-serif;
 	font-weight: 300;
 	width: 100vw;
-	padding: 20vw;
+	padding: clamp(90px, 20vw, 185px);
 	box-sizing: border-box;
 }
 
-p {
-    line-height: 1;
-    margin: 10px 0;
+.page-not-found__content p {
+	line-height: 1;
+	margin: 10px 0;
 }

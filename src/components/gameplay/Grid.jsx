@@ -28,7 +28,7 @@ const Grid = ({ squareValues, markCell }) => {
 		);
 	});
 
-	return <div id="grid">{gridJSX}</div>;
+	return <div className='game__grid'>{gridJSX}</div>;
 };
 
 export default Grid;

@@ -1,7 +1,7 @@
-#grid {
+.game__grid {
 	flex-direction: column;
-	height: 60vw;
-	width: 60vw;
+	height: clamp(270px, 60vw, 555px);
+	width: clamp(270px, 60vw, 555px);
 	gap: 4px;
 	margin: 0 auto;
 	cursor: pointer;
@@ -9,28 +9,28 @@
 
 .row {
 	flex-direction: row;
-	width: 60vw;
-	height: 20vw;
+	width: clamp(270px, 60vw, 555px);
+	height: clamp(90px, 20vw, 185px);
 	margin: 0 auto;
 }
 
-#grid,
+.game__grid,
 .row {
-	gap: 0.5vw;
+	gap: clamp(2px, 0.5vw, 6px);
 }
 
 .square {
 	justify-content: center;
 	align-items: center;
-	width: 20vw;
-	height: 20vw;
+	width: clamp(90px, 20vw, 183px);
+	height: clamp(90px, 20vw, 183px);
 }
 
 .x-mark,
 .o-mark {
 	color: white;
 	font-family: 'Outfit', sans-serif;
-	font-size: 22vw;
+	font-size: clamp(90px, 22vw, 203px);
 	font-weight: 700;
 	line-height: 0;
 	opacity: 1;
@@ -43,114 +43,50 @@
 	animation-iteration-count: 1;
 }
 
-#players {
+.game__players {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
-	height: 20vw;
-	width: 100vw;
-	gap: 3vw;
+	height: clamp(130px, 20vw, 185px);
+	width: clamp(270px, 60vw, 555px);
+	margin: 0 auto;
+	gap: clamp(13px, 3vw, 22px);
 }
 
-#game-over {
+.game-over__content {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-	width: 60vw;
+	width: clamp(270px, 60vw, 555px);
 	margin: auto;
-	padding: 5vw 5vw 3vw;
-	gap: 4vw;
+	padding: clamp(23px, 5vw, 46px) clamp(23px, 5vw, 46px)
+		clamp(14px, 3vw, 28px);
+	gap: clamp(18px, 4vw, 37px);
 }
 
 .player-container {
 	justify-content: center;
-	width: 28vw;
-	height: 10vw;
+	align-items: center;
+	width: calc((100% - clamp(13px, 3vw, 22px)) / 2);
+	height: clamp(40px, 10vw, 88px);
 	cursor: default;
 }
 
-#reset-game {
+.game__reset {
 	justify-content: center;
-	width: 60vw;
-    cursor: pointer;
-}
-
-@media screen and (min-width: 925px) {
-	#players {
-		height: 185px;
-		gap: 22px;
-	}
-	#grid {
-		width: 555px;
-		height: 555px;
-	}
-	.row {
-		width: 555px;
-		height: 185px;
-	}
-	#grid,
-	.row {
-		gap: 6px;
-	}
-	.square {
-		width: 183px;
-		height: 183px;
-	}
-	.x-mark,
-	.o-mark {
-		font-size: 203px;
-	}
-	#game-over {
-		width: 555px;
-		padding: 46px 46px 28px;
-		gap: 37px;
-	}
-	.player-container {
-		width: 260px;
-		height: 88px;
-	}
-	#reset-game {
-		width: 555px;
-	}
+	width: clamp(270px, 60vw, 555px);
+	cursor: pointer;
 }
 
 @media screen and (max-width: 450px) {
-	#players {
-		height: 130px;
+	.game__players {
 		flex-direction: column;
-	}
-	#grid {
-		width: 270px;
-		height: 270px;
-	}
-	.row {
-		width: 270px;
-		height: 90px;
-	}
-	#grid,
-	.row {
-		gap: 2px;
-	}
-	.square {
-		width: 90px;
-		height: 90px;
-	}
-	.x-mark,
-	.o-mark {
-		font-size: 90px;
+		width: 266px;
 	}
 	.player-container {
 		width: 266px;
-		height: 40px;
-	}
-	#game-over {
-		width: 270px;
-		padding: 23px 23px 14px;
-		gap: 18px;
-	}
-	#reset-game {
-		width: 270px;
+		height: clamp(40px, 10vw, 88px);
 	}
 }

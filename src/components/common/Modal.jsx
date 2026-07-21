@@ -6,12 +6,11 @@ const Modal = ({ id, closeModal, align, children }) => {
 	const { darkMode } = use(SettingsContext);
 
 	return (
-		<div id={id} className="modal">
+		<div id={id} className='modal'>
 			<div
-				id="modal-content"
-				className={`${darkMode ? 'light-mode' : 'dark-mode'} align-${align}`}>
-				<div className="modal-button" onClick={closeModal}>
-					<i className="fa-solid fa-xmark" />
+				className={`modal__content ${darkMode ? 'light-mode' : 'dark-mode'} align-${align}`}>
+				<div className='modal-button' onClick={closeModal}>
+					<i className='fa-solid fa-xmark' />
 				</div>
 				<div>{children}</div>
 			</div>
