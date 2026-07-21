@@ -43,7 +43,7 @@ const About = () => {
 					</tr>
 				</tbody>
 			</table>
-			<Spacer height="20px" />
+			<Spacer marginY="10px" />
 			<h2>
 				<Link to="/">Play now!</Link>
 			</h2>
