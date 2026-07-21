@@ -1,5 +1,5 @@
 import { use, useState } from 'react';
-import { SettingsContext } from '../../context/SettingsContext.jsx';
+import { SettingsContext } from '@context/SettingsContext.jsx';
 
 const Player = ({ playerId, isPlayerTurn }) => {
 	const { darkMode } = use(SettingsContext);

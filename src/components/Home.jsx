@@ -5,7 +5,7 @@ import Main from './Main';
 import Footer from './Footer';
 import SettingsModal from './settings/SettingsModal';
 import StatsModal from './stats/StatsModal.jsx';
-import { SettingsContext } from '../context/SettingsContext.jsx';
+import { SettingsContext } from '@context/SettingsContext.jsx';
 
 function Home() {
 	const { currentPalette, darkMode } = use(SettingsContext);

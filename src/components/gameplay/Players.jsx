@@ -1,7 +1,7 @@
 import { use } from 'react';
 import Player from './Player';
 import './gameplay.css';
-import { CurrentPlayerContext } from '../../context/CurrentPlayerContext';
+import { CurrentPlayerContext } from '@context/CurrentPlayerContext';
 
 const Players = ({ resetGame }) => {
 	const { currentPlayer } = use(CurrentPlayerContext);

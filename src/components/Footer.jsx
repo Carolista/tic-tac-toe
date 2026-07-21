@@ -1,6 +1,6 @@
 import { use } from 'react';
 import { Link } from 'react-router';
-import { SettingsContext } from '../context/SettingsContext.jsx';
+import { SettingsContext } from '@context/SettingsContext.jsx';
 
 const Footer = ({ openSettingsModal, openStatsModal }) => {
 	const { darkMode } = use(SettingsContext);

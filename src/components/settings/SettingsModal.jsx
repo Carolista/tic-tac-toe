@@ -1,7 +1,7 @@
 import { useState, use } from 'react';
 import Palettes from './Palettes';
-import Modal from '../common/Modal';
-import { SettingsContext } from '../../context/SettingsContext.jsx';
+import Modal from '@common/Modal';
+import { SettingsContext } from '@context/SettingsContext.jsx';
 import './settings.css';
 
 const SettingsModal = ({ closeModal }) => {

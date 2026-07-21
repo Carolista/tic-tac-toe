@@ -1,4 +1,4 @@
-import { palettes } from '../../shared/colors';
+import { palettes } from '@shared/colors';
 import Palette from './Palette';
 
 const Palettes = ({ closeModal }) => {

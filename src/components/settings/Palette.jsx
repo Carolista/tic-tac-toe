@@ -1,5 +1,5 @@
 import { useState, useEffect, use } from 'react';
-import { SettingsContext } from '../../context/SettingsContext.jsx';
+import { SettingsContext } from '@context/SettingsContext.jsx';
 
 const Palette = ({ id, palette, closeModal }) => {
 	const { darkMode, currentPalette, setCurrentPalette } = use(SettingsContext);

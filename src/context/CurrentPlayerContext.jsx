@@ -1,5 +1,5 @@
 import { createContext, useState } from 'react';
-import { getRandomElement } from '../shared/utils';
+import { getRandomElement } from '@shared/utils';
 
 export const CurrentPlayerContext = createContext();
 

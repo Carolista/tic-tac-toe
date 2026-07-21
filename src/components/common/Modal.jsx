@@ -1,5 +1,5 @@
 import { use } from 'react';
-import { SettingsContext } from '../../context/SettingsContext.jsx';
+import { SettingsContext } from '@context/SettingsContext.jsx';
 
 const Modal = ({ id, closeModal, align, children }) => {
 	const { darkMode } = use(SettingsContext);
