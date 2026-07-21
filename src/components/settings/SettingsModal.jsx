@@ -1,7 +1,7 @@
 import { useState, use } from 'react';
 import Palettes from './Palettes';
-import Modal from '../common/Modal';
-import { SettingsContext } from '../../context/SettingsContext.jsx';
+import Modal from '@common/Modal';
+import { SettingsContext } from '@context/SettingsContext.jsx';
 import './settings.css';
 
 const SettingsModal = ({ closeModal }) => {
@@ -23,13 +23,12 @@ const SettingsModal = ({ closeModal }) => {
 	};
 
 	return (
-		<Modal id="settings-modal" align={'top'} closeModal={closeModal}>
-			<div id="settings-content">
-				<div id="dark-mode-toggle">
+		<Modal id='settings-modal' align={'top'} closeModal={closeModal}>
+			<div className='settings__content'>
+				<div className='settings__toggle'>
 					DARK MODE: &nbsp;
 					<span
-						id="on-off"
-						className={`${shouldScale && 'scale-up'}`}
+						className={`settings__switch ${shouldScale ? 'scale-up' : ''}`}
 						onClick={toggleDarkMode}
 						onMouseEnter={handleMouseEnter}
 						onMouseLeave={handleMouseLeave}>

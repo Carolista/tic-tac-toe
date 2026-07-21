@@ -3,10 +3,12 @@ import './pageNotFound.css';
 
 const PageNotFound = () => {
 	return (
-		<div id="page-not-found-content" className="align-middle">
+		<div className='page-not-found__content align-middle'>
 			<h2>Oops!</h2>
 			<p>There are no games to be found here.</p>
-			<p>Try going <Link to="/">here</Link> instead!</p>
+			<p>
+				Try going <Link to='/'>here</Link> instead!
+			</p>
 		</div>
 	);
 };

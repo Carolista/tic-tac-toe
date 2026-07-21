@@ -1,4 +1,9 @@
+export const getRandomInt = (max, min = 0) => {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 export const getRandomElement = arr => {
-	let randomIndex = Math.floor(Math.random() * arr.length);
-	return arr[randomIndex];
+	return arr[getRandomInt(arr.length - 1)];
 };

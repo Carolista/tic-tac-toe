@@ -9,13 +9,13 @@ function App() {
 	const { darkMode } = use(SettingsContext);
 
 	return (
-		<div id="window" className={darkMode ? 'dark-mode' : 'light-mode'}>
+		<div className={`app-root ${darkMode ? 'dark-mode' : 'light-mode'}`}>
 			<HashRouter>
 				<Routes>
-					<Route path="/" element={<Navigate to="/play" replace />} />
-					<Route path="/play" element={<Home />} />
-					<Route path="/about" element={<About />} />
-					<Route path="/*" element={<PageNotFound />} />
+					<Route path='/' element={<Navigate to='/play' replace />} />
+					<Route path='/play' element={<Home />} />
+					<Route path='/about' element={<About />} />
+					<Route path='/*' element={<PageNotFound />} />
 				</Routes>
 			</HashRouter>
 		</div>

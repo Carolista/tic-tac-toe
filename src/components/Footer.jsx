@@ -1,28 +1,28 @@
 import { use } from 'react';
 import { Link } from 'react-router';
-import { SettingsContext } from '../context/SettingsContext.jsx';
+import { SettingsContext } from '@context/SettingsContext.jsx';
 
 const Footer = ({ openSettingsModal, openStatsModal }) => {
 	const { darkMode } = use(SettingsContext);
 
 	return (
 		<footer>
-			<div id="footer-icons">
+			<div className='footer__icons'>
 				<i
-					className="fa-solid fa-gear fa-xl"
+					className='fa-solid fa-gear fa-xl'
 					onClick={openSettingsModal}
-					title="Settings"></i>
+					title='Settings'></i>
 				<Link
-					to="/about"
+					to='/about'
 					className={darkMode ? 'icon-link-dark' : 'icon-link-light'}>
 					<i
-						className="fa-solid fa-circle-question fa-xl"
-						title="How to Play"></i>
+						className='fa-solid fa-circle-question fa-xl'
+						title='How to Play'></i>
 				</Link>
 				<i
-					className="fa-solid fa-chart-simple fa-xl"
+					className='fa-solid fa-chart-simple fa-xl'
 					onClick={openStatsModal}
-					title="Statistics"></i>
+					title='Statistics'></i>
 			</div>
 		</footer>
 	);

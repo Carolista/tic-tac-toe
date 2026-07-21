@@ -2,6 +2,7 @@ import Square from './Square';
 import './gameplay.css';
 
 let rowBasis = [0, 1, 2];
+let columnBasis = [0, 1, 2];
 let cellBasis = [
 	[0, 1, 2],
 	[3, 4, 5],
@@ -13,7 +14,7 @@ const Grid = ({ squareValues, markCell }) => {
 	const gridJSX = rowBasis.map(i => {
 		return (
 			<div key={`row-${i}`} className={`row row-${i}`}>
-				{rowBasis.map(j => {
+				{columnBasis.map(j => {
 					let cellNum = cellBasis[i][j];
 					return (
 						<Square
@@ -27,7 +28,7 @@ const Grid = ({ squareValues, markCell }) => {
 		);
 	});
 
-	return <div id="grid">{gridJSX}</div>;
+	return <div className='game__grid'>{gridJSX}</div>;
 };
 
 export default Grid;

@@ -7,7 +7,7 @@ body {
 	box-sizing: border-box;
 }
 
-#window {
+.app-root {
 	display: flex;
 	flex-direction: column;
 }
@@ -17,7 +17,7 @@ header {
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
-	height: 20vw;
+	height: clamp(90px, 20vw, 185px);
 	width: 100vw;
 }
 
@@ -32,7 +32,7 @@ footer {
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
-	height: 6vw;
+	height: clamp(27px, 6vw, 55px);
 }
 
 div {
@@ -43,14 +43,14 @@ div {
 
 h1 {
 	font-family: 'Barrio', system-ui;
-	font-size: 11vw;
+	font-size: clamp(49px, 11vw, 102px);
 	margin: 0;
 }
 
 h2,
-#dark-mode-toggle {
+.settings__toggle {
 	font-family: 'Barrio', system-ui;
-	font-size: 6vw;
+	font-size: clamp(27px, 6vw, 55px);
 	margin: auto 0;
 }
 
@@ -84,7 +84,7 @@ tr:hover td {
 }
 
 td {
-    vertical-align: top;
+	vertical-align: top;
 	padding: 5px 20px 5px 0;
 }
 td:first-child {
@@ -96,7 +96,7 @@ td:last-child {
 }
 
 .bold {
-    font-weight: 600;
+	font-weight: 600;
 }
 
 .align-top {
@@ -107,35 +107,9 @@ td:last-child {
 	margin: auto;
 }
 
-.modal {
-	display: flex;
-	flex-direction: column;
-	position: absolute;
-	top: 0;
-	left: 0;
-	color: white;
-	min-height: 100vh;
-	height: fit-content;
-	width: 100vw;
-	z-index: 10;
-}
-
-#modal-content {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-end;
-	padding: 3vw;
-}
-
-.modal-button {
-	background-color: transparent;
-	cursor: pointer;
-	z-index: 11;
-}
-
-#footer-icons {
+.footer__icons {
 	align-items: center;
-	gap: 3vw;
+	gap: clamp(13px, 3vw, 28px);
 	cursor: pointer;
 }
 
@@ -150,11 +124,11 @@ td:last-child {
 }
 
 .border-dark {
-	border: 0.7vw solid #333;
+	border: clamp(3px, 0.7vw, 6px) solid #333;
 }
 
 .border-light {
-	border: 0.7vw solid white;
+	border: clamp(3px, 0.7vw, 6px) solid white;
 }
 
 .dark-mode-icon {
@@ -200,55 +174,5 @@ td:last-child {
 	}
 	100% {
 		transform: scale(1);
-	}
-}
-
-@media screen and (min-width: 925px) {
-	header {
-		height: 185px;
-	}
-	h1 {
-		font-size: 102px;
-	}
-	h2,
-	#dark-mode-toggle {
-		font-size: 55px;
-	}
-	footer {
-		height: 55px;
-	}
-	#footer-icons {
-		gap: 28px;
-	}
-	.border-dark {
-		border: 6px solid #333;
-	}
-	.border-light {
-		border: 6px solid white;
-	}
-}
-
-@media screen and (max-width: 450px) {
-	header {
-		height: 90px;
-	}
-	h1 {
-		font-size: 49px;
-	}
-	h2,
-	#dark-mode-toggle {
-		font-size: 27px;
-	}
-	footer {
-		height: 27px;
-	}
-	#footer-icons {
-		gap: 13px;
-	}
-	.border-dark {
-		border: 3px solid #333;
-	}
-	.border-light {
-		border: 3px solid white;
 	}
 }

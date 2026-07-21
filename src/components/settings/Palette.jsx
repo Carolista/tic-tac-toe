@@ -1,8 +1,9 @@
 import { useState, useEffect, use } from 'react';
-import { SettingsContext } from '../../context/SettingsContext.jsx';
+import { SettingsContext } from '@context/SettingsContext.jsx';
 
 const Palette = ({ id, palette, closeModal }) => {
-	const { darkMode, currentPalette, setCurrentPalette } = use(SettingsContext);
+	const { darkMode, currentPalette, setCurrentPalette } =
+		use(SettingsContext);
 
 	const [borderClass, setBorderClass] = useState('');
 
@@ -22,14 +23,14 @@ const Palette = ({ id, palette, closeModal }) => {
 		return (
 			<div
 				key={i}
-				className="color"
+				className='color'
 				style={{ backgroundColor: `#${color}` }}></div>
 		);
 	});
 
 	return (
 		<div
-			id={`palette-${id}`}
+			data-palette-id={id}
 			className={`palette ${borderClass}`}
 			onClick={handleChangePalette}
 			onDoubleClick={closeModal}>

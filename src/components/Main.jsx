@@ -1,8 +1,8 @@
 import { useEffect, useState, use } from 'react';
 import { createPortal } from 'react-dom';
-import { getRandomElement } from '../shared/utils.js';
-import { CurrentPlayerContext } from '../context/CurrentPlayerContext.jsx';
-import { SettingsContext } from '../context/SettingsContext.jsx';
+import { getRandomElement } from '@shared/utils.js';
+import { CurrentPlayerContext } from '@context/CurrentPlayerContext.jsx';
+import { SettingsContext } from '@context/SettingsContext.jsx';
 import Grid from './gameplay/Grid.jsx';
 import GameOverModal from './gameplay/GameOverModal.jsx';
 import Players from './gameplay/Players.jsx';

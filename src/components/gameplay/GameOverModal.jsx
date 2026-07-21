@@ -1,9 +1,9 @@
-import Modal from '../common/Modal';
+import Modal from '@common/Modal';
 
 const GameOverModal = ({ winner, closeModal }) => {
 	return (
-		<Modal id="game-over-modal" align={'middle'} closeModal={closeModal}>
-			<div id="game-over">
+		<Modal id='game-over-modal' align={'middle'} closeModal={closeModal}>
+			<div className='game-over__content'>
 				{winner ? (
 					<h1>{`Congrats, Player ${winner}!`}</h1>
 				) : (

@@ -1,5 +1,5 @@
 import { useState, use } from 'react';
-import { CurrentPlayerContext } from '../../context/CurrentPlayerContext';
+import { CurrentPlayerContext } from '@context/CurrentPlayerContext';
 
 const Square = ({ square, markCell }) => {
 	const { currentPlayer } = use(CurrentPlayerContext);
@@ -22,8 +22,8 @@ const Square = ({ square, markCell }) => {
 
 	return (
 		<div
-			id={square.id}
-			className="square"
+			data-square-id={square.id}
+			className='square'
 			style={{ backgroundColor: `#${square.color}` }}
 			onClick={handleClick}
 			onMouseEnter={handleMouseEnter}
@@ -34,7 +34,8 @@ const Square = ({ square, markCell }) => {
 				</span>
 			)}
 			{currentPlayer && showTranslucentMark && (
-				<span className={`${currentPlayer.toLowerCase()}-mark translucent`}>
+				<span
+					className={`${currentPlayer.toLowerCase()}-mark translucent`}>
 					{currentPlayer}
 				</span>
 			)}
